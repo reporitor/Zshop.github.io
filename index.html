@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTopUp | Top Up Game Termurah di Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS */
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .neon-text {
+            text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 240, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+        }
+        .bottom-nav {
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-2">
+                    <i class="fas fa-gamepad text-white text-xl"></i>
+                </div>
+                <h1 class="text-xl font-bold">Game<span class="text-blue-400">TopUp</span></h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-400 transition">Beranda</a>
+                <a href="#games" class="hover:text-blue-400 transition">Game</a>
+                <a href="#cek-pesanan" class="hover:text-blue-400 transition">Cek Pesanan</a>
+                <a href="#bantuan" class="hover:text-blue-400 transition">Bantuan</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="loginBtn" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md transition">
+                    <i class="fas fa-user mr-2"></i>Masuk
+                </button>
+                <button class="md:hidden" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden gradient-bg absolute w-full px-4 pb-4 md:hidden">
+            <a href="#" class="block py-2 hover:text-blue-400">Beranda</a>
+            <a href="#games" class="block py-2 hover:text-blue-400">Game</a>
+            <a href="#cek-pesanan" class="block py-2 hover:text-blue-400">Cek Pesanan</a>
+            <a href="#bantuan" class="block py-2 hover:text-blue-400">Bantuan</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 neon-text">TOP UP GAME <span class="text-blue-400">MUDAH & CEPAT</span></h2>
+                <p class="text-lg mb-6 text-blue-100">Isi diamond, koin, atau voucher game favoritmu dengan harga termurah di Indonesia!</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-md font-semibold transition pulse-animation">
+                        <i class="fas fa-bolt mr-2"></i>Top Up Sekarang
+                    </button>
+                    <button class="border border-blue-400 text-blue-400 hover:bg-blue-900 px-6 py-3 rounded-md font-semibold transition">
+                        <i class="fas fa-question-circle mr-2"></i>Cara Top Up
+                    </button>
+                </div>
+                <div class="mt-8 flex items-center space-x-4">
+                    <div class="flex -space-x-2">
+                        <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-blue-400">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-blue-400">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" class="w-10 h-10 rounded-full border-2 border-blue-400">
+                    </div>
+                    <div>
+                        <p class="text-sm text-blue-200"><span class="font-bold">50.000+</span> pengguna telah melakukan top up</p>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span class="text-sm ml-1">4.9/5 (10.000+ ulasan)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute -top-8 -left-8 w-32 h-32 bg-blue-500 rounded-full opacity-20 blur-xl"></div>
+                    <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-blue-400 rounded-full opacity-20 blur-xl"></div>
+                    <div class="relative bg-gray-800 bg-opacity-50 backdrop-blur-sm rounded-xl p-6 border border-blue-400 border-opacity-30 shadow-lg">
+                        <h3 class="text-xl font-bold mb-4 text-center">Cek Status Pesanan</h3>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium mb-2">Masukkan Invoice ID</label>
+                            <input type="text" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Contoh: INV-123456">
+                        </div>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 py-2 rounded-md font-medium transition">
+                            <i class="fas fa-search mr-2"></i>Cek Pesanan
+                        </button>
+                        <p class="text-xs text-center mt-4 text-gray-400">Invoice ID bisa Anda temukan di email atau halaman riwayat transaksi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Populer Section -->
+    <section id="games" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Game <span class="text-blue-600">Populer</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Top up game favoritmu dengan proses instan dan harga termurah</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Game 1 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=Mobile+Legends" class="w-full h-32 object-cover">
+                        <div class="absolute top-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded">Diskon 10%</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Mobile Legends</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game 2 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=Free+Fire" class="w-full h-32 object-cover">
+                        <div class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">Terlaris</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Free Fire</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game 3 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=Genshin+Impact" class="w-full h-32 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Genshin Impact</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game 4 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=Valorant" class="w-full h-32 object-cover">
+                        <div class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">Baru</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Valorant</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game 5 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=PubG+Mobile" class="w-full h-32 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">PUBG Mobile</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game 6 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=Call+of+Duty" class="w-full h-32 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Call of Duty</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game 7 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=Apex+Legends" class="w-full h-32 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Apex Legends</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game 8 -->
+                <div class="game-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x150?text=League+of+Legends" class="w-full h-32 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">League of Legends</h3>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm transition">
+                            Top Up Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-2 rounded-md font-medium transition">
+                    Lihat Semua Game
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Kenapa Memilih <span class="text-blue-600">GameTopUp</span>?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami memberikan pengalaman top up terbaik untuk para gamers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bolt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Proses Cepat</h3>
+                    <p class="text-gray-600">Proses top up hanya membutuhkan waktu 1-3 menit setelah pembayaran</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tag text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Harga Termurah</h3>
+                    <p class="text-gray-600">Harga lebih murah dibandingkan toko game resmi dan kompetitor</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Bantuan 24 Jam</h3>
+                    <p class="text-gray-600">Tim customer service siap membantu Anda kapan saja</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metode Pembayaran Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Metode <span class="text-blue-600">Pembayaran</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Berbagai pilihan metode pembayaran yang aman dan terpercaya</p>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=QRIS" alt="QRIS" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=BCA" alt="BCA" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=Mandiri" alt="Mandiri" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=BNI" alt="BNI" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=BRI" alt="BRI" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=Gopay" alt="Gopay" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=OVO" alt="OVO" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=Dana" alt="Dana" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=LinkAja" alt="LinkAja" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=ShopeePay" alt="ShopeePay" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=Alfamart" alt="Alfamart" class="h-8">
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                    <img src="https://via.placeholder.com/80x40?text=Indomaret" alt="Indomaret" class="h-8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Apa Kata <span class="text-blue-600">Pelanggan</span> Kami?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Testimoni dari gamers yang telah melakukan top up di platform kami</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sarah Wijaya</h4>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Top up MLBB cepat banget, ga sampe 2 menit diamond langsung masuk. Harganya juga lebih murah dari yang lain!"</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Budi Santoso</h4>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Pertama kali coba top up disini dan ternyata beneran legit. CS nya ramah dan respon cepat waktu ada masalah."</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Dewi Lestari</h4>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Biasanya top up di tempat lain, tapi sejak temen rekomendasiin ini, jadi langganan disini aja. Murah dan cepat!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="bantuan" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Pertanyaan <span class="text-blue-600">Umum</span></h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Temukan jawaban untuk pertanyaan yang sering diajukan</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Bagaimana cara melakukan top up?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-white">
+                        <p>1. Pilih game yang ingin Anda top up<br>
+                        2. Masukkan ID game dan server<br>
+                        3. Pilih nominal yang diinginkan<br>
+                        4. Pilih metode pembayaran<br>
+                        5. Lakukan pembayaran<br>
+                        6. Diamond/koin akan masuk secara otomatis dalam 1-3 menit</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Berapa lama proses top up?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-white">
+                        <p>Proses top up biasanya memakan waktu 1-3 menit setelah pembayaran berhasil. Jika lebih dari 10 menit belum masuk, silakan hubungi customer service kami.</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Apa yang harus dilakukan jika diamond tidak masuk?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-white">
+                        <p>1. Pastikan ID game dan server yang dimasukkan sudah benar<br>
+                        2. Cek email Anda untuk invoice pembayaran<br>
+                        3. Jika sudah lebih dari 10 menit dan belum masuk, hubungi CS kami via live chat dengan menyertakan bukti pembayaran<br>
+                        4. Tim kami akan memproses dan membantu Anda</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="faq-toggle w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="font-medium text-left">Apakah pembelian di GameTopUp aman?</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-4 bg-white">
+                        <p>Tentu saja! Kami menggunakan sistem pembayaran yang aman dan terpercaya. Data pribadi Anda juga akan kami jaga kerahasiaannya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Siap Top Up Game Favoritmu?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto text-blue-100">Bergabunglah dengan ribuan gamers lainnya yang telah merasakan kemudahan top up di GameTopUp</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <button class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-md font-semibold transition">
+                    <i class="fas fa-bolt mr-2"></i>Top Up Sekarang
+                </button>
+                <button class="border border-blue-400 text-blue-400 hover:bg-blue-900 px-8 py-3 rounded-md font-semibold transition">
+                    <i class="fas fa-question-circle mr-2"></i>Butuh Bantuan?
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-2">
+                            <i class="fas fa-gamepad text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Game<span class="text-blue-400">TopUp</span></h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">Platform top up game termurah dan tercepat di Indonesia.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Beranda</a></li>
+                        <li><a href="#games" class="text-gray-400 hover:text-blue-400 transition">Game Populer</a></li>
+                        <li><a href="#cek-pesanan" class="text-gray-400 hover:text-blue-400 transition">Cek Pesanan</a></li>
+                        <li><a href="#bantuan" class="text-gray-400 hover:text-blue-400 transition">Bantuan</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Layanan</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Mobile Legends</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Free Fire</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Genshin Impact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Valorant</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Kontak Kami</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400"><i class="fas fa-envelope mr-2 text-blue-400"></i> cs@gametopup.id</li>
+                        <li class="flex items-center text-gray-400"><i class="fab fa-whatsapp mr-2 text-blue-400"></i> +62 812-3456-7890</li>
+                        <li class="flex items-center text-gray-400"><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i> Jakarta, Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 GameTopUp. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-blue-400 text-sm transition">Syarat & Ketentuan</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 text-sm transition">Kebijakan Privasi</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 text-sm transition">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation Mobile -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white bottom-nav flex justify-around items-center py-3 z-50">
+        <a href="#" class="flex flex-col items-center text-blue-600">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-xs mt-1">Beranda</span>
+        </a>
+        <a href="#games" class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-gamepad text-lg"></i>
+            <span class="text-xs mt-1">Game</span>
+        </a>
+        <a href="#cek-pesanan" class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-search text-lg"></i>
+            <span class="text-xs mt-1">Cek Pesanan</span>
+        </a>
+        <a href="#bantuan" class="flex flex-col items-center text-gray-500">
+            <i class="fas fa-question-circle text-lg"></i>
+            <span class="text-xs mt-1">Bantuan</span>
+        </a>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-md w-full p-6 mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Masuk ke Akun</h3>
+                <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md font-medium transition mb-4">
+                    Masuk
+                </button>
+                <div class="text-center">
+                    <p class="text-gray-600 text-sm">Belum punya akun? <a href="#" class="text-blue-600 hover:underline">Daftar sekarang</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Login Modal
+        const loginBtn = document.getElementById('loginBtn');
+        const loginModal = document.getElementById('loginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.remove('hidden');
+        });
+        
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.classList.add('hidden');
+        });
+        
+        // FAQ Toggle
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
