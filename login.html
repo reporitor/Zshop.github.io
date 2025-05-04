@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTopUp - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --primary-blue: #172a45;
+            --accent-teal: #64ffda;
+            --accent-light: #ccd6f6;
+            --white: #ffffff;
+            --gray: #8892b0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .login-container {
+            max-width: 400px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-header img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        
+        .login-header h2 {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+        
+        .btn-login {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            border: none;
+        }
+        
+        .btn-login:hover {
+            background-color: var(--primary-blue);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--gray);
+        }
+        
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .divider::before {
+            margin-right: 1rem;
+        }
+        
+        .divider::after {
+            margin-left: 1rem;
+        }
+        
+        .social-login .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .social-login .btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .login-footer a {
+            color: var(--primary-dark);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Hide account section initially */
+        #account-section {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="container" id="login-section">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="https://via.placeholder.com/150x50?text=GameTopUp" alt="GameTopUp Logo">
+                <h2>Masuk ke Akun Anda</h2>
+                <p class="text-muted">Silakan masuk untuk mengakses dashboard akun</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="mb-3">
+                    <label for="login-email" class="form-label">Email atau Username</label>
+                    <input type="text" class="form-control" id="login-email" placeholder="Masukkan email atau username" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="login-password" placeholder="Masukkan password" required>
+                        <button class="btn btn-outline-secondary" type="button" id="toggle-password">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remember-me">
+                        <label class="form-check-label" for="remember-me">Ingat saya</label>
+                    </div>
+                    <a href="#forgot-password" class="text-decoration-none">Lupa password?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-login mb-3">Masuk</button>
+                
+                <div class="divider">atau masuk dengan</div>
+                
+                <div class="social-login">
+                    <button type="button" class="btn btn-outline-primary w-100">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button type="button" class="btn btn-outline-dark w-100">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                Belum punya akun? <a href="#register">Daftar sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Section (Hidden until login) -->
+    <section id="account-section" class="py-5 bg-white">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Akun Saya</h2>
+                <button id="logout-btn" class="btn btn-outline-danger">
+                    <i class="fas fa-sign-out-alt me-1"></i> Keluar
+                </button>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="account-sidebar sticky-top" style="top: 20px;">
+                        <div class="text-center mb-4">
+                            <div class="position-relative d-inline-block">
+                                <img src="https://via.placeholder.com/100" alt="Profile" class="rounded-circle mb-2" width="100" id="profile-image">
+                            </div>
+                            <h5 id="user-name">John Doe</h5>
+                            <p class="text-muted mb-2">Member sejak Juni 2023</p>
+                            <span class="badge bg-primary">Verified <i class="fas fa-check-circle ms-1"></i></span>
+                        </div>
+                        
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#dashboard">
+                                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#transactions">
+                                    <i class="fas fa-history me-2"></i> Riwayat Transaksi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#profile">
+                                    <i class="fas fa-user me-2"></i> Profil Saya
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#security">
+                                    <i class="fas fa-lock me-2"></i> Keamanan
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-9">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h4 class="mb-4">Selamat datang kembali, <span id="display-name">John</span>!</h4>
+                            
+                            <div class="alert alert-success">
+                                <i class="fas fa-gift me-2"></i> Anda memiliki <strong>1250 Poin Reward</strong> yang dapat ditukarkan!
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card border-0 bg-light h-100">
+                                        <div class="card-body">
+                                            <h5><i class="fas fa-shopping-cart me-2"></i> Transaksi Terakhir</h5>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <div>
+                                                    <h6 class="mb-0">Mobile Legends</h6>
+                                                    <small class="text-muted">15 Jun 2023</small>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h6 class="mb-0">100 Diamond</h6>
+                                                    <span class="badge bg-success">Sukses</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <div class="card border-0 bg-light h-100">
+                                        <div class="card-body">
+                                            <h5><i class="fas fa-bell me-2"></i> Notifikasi</h5>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <div>
+                                                    <h6 class="mb-0">Promo Spesial</h6>
+                                                    <small class="text-muted">Hari ini</small>
+                                                </div>
+                                                <div>
+                                                    <span class="badge bg-danger">2 Baru</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="mb-3">Aktivitas Terkini</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Aktivitas</th>
+                                            <th>Status</th>
+                                            <th>Detail</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>15 Jun 2023</td>
+                                            <td>Top Up Mobile Legends</td>
+                                            <td><span class="badge bg-success">Sukses</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Lihat</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>14 Jun 2023</td>
+                                            <td>Ganti Password</td>
+                                            <td><span class="badge bg-info">Sistem</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Lihat</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10 Jun 2023</td>
+                                            <td>Top Up PUBG Mobile</td>
+                                            <td><span class="badge bg-success">Sukses</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Lihat</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle password visibility
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('login-password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get input values
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const rememberMe = document.getElementById('remember-me').checked;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Silakan isi email dan password');
+                return;
+            }
+            
+            // Simulate login (in a real app, you would call your backend API)
+            setTimeout(() => {
+                // Hide login form
+                document.getElementById('login-section').style.display = 'none';
+                
+                // Show account section
+                document.getElementById('account-section').style.display = 'block';
+                
+                // Update user info
+                document.getElementById('user-name').textContent = 'John Doe';
+                document.getElementById('display-name').textContent = 'John';
+                
+                // Store login state (simplified)
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }, 500);
+        });
+        
+        // Handle logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            // Clear login state
+            localStorage.removeItem('isLoggedIn');
+            
+            // Show login form
+            document.getElementById('login-section').style.display = 'block';
+            
+            // Hide account section
+            document.getElementById('account-section').style.display = 'none';
+            
+            // Reset form
+            document.getElementById('login-form').reset();
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+        
+        // Check login state on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (isLoggedIn === 'true') {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('account-section').style.display = 'block';
+            } else {
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('account-section').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
