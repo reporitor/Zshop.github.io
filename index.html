@@ -336,7 +336,125 @@
         .animate-fadein {
             animation: fadeIn 0.5s ease forwards;
         }
+
+            :root {
+            --primary-dark: #0a192f;
+            --primary-blue: #172a45;
+            --accent-teal: #64ffda;
+            --accent-light: #ccd6f6;
+            --white: #ffffff;
+            --gray: #8892b0;
+        }
         
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .login-container {
+            max-width: 400px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-header img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+        
+        .login-header h2 {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+        }
+        
+        .btn-login {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            width: 100%;
+            border: none;
+        }
+        
+        .btn-login:hover {
+            background-color: var(--primary-blue);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--gray);
+        }
+        
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .divider::before {
+            margin-right: 1rem;
+        }
+        
+        .divider::after {
+            margin-left: 1rem;
+        }
+        
+        .social-login .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .social-login .btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .login-footer a {
+            color: var(--primary-dark);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Hide account section initially */
+        #account-section {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
@@ -728,179 +846,278 @@
     </section>
 
     <!-- Account Section -->
-    <section id="account-section" class="py-5 bg-white" style="display: none;">
+     <!-- Login Form -->
+    <div class="container" id="login-section">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="https://via.placeholder.com/150x50?text=GameTopUp" alt="GameTopUp Logo">
+                <h2>Masuk ke Akun Anda</h2>
+                <p class="text-muted">Silakan masuk untuk mengakses dashboard akun</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="mb-3">
+                    <label for="login-email" class="form-label">Email atau Username</label>
+                    <input type="text" class="form-control" id="login-email" placeholder="Masukkan email atau username" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="login-password" placeholder="Masukkan password" required>
+                        <button class="btn btn-outline-secondary" type="button" id="toggle-password">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="remember-me">
+                        <label class="form-check-label" for="remember-me">Ingat saya</label>
+                    </div>
+                    <a href="#forgot-password" class="text-decoration-none">Lupa password?</a>
+                </div>
+                
+                <button type="submit" class="btn btn-login mb-3">Masuk</button>
+                
+                <div class="divider">atau masuk dengan</div>
+                
+                <div class="social-login">
+                    <button type="button" class="btn btn-outline-primary w-100">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                    <button type="button" class="btn btn-outline-dark w-100">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </button>
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                Belum punya akun? <a href="#register">Daftar sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Section (Hidden until login) -->
+    <section id="account-section" class="py-5 bg-white">
         <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Akun Saya</h2>
+                <button id="logout-btn" class="btn btn-outline-danger">
+                    <i class="fas fa-sign-out-alt me-1"></i> Keluar
+                </button>
+            </div>
+            
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="product-detail sticky-top" style="top: 20px;">
+                    <div class="account-sidebar sticky-top" style="top: 20px;">
                         <div class="text-center mb-4">
-                            <img src="https://via.placeholder.com/100" alt="Profile" class="rounded-circle mb-2" width="100">
+                            <div class="position-relative d-inline-block">
+                                <img src="https://via.placeholder.com/100" alt="Profile" class="rounded-circle mb-2" width="100" id="profile-image">
+                            </div>
                             <h5 id="user-name">John Doe</h5>
-                            <p class="text-muted mb-0">Member sejak Juni 2023</p>
+                            <p class="text-muted mb-2">Member sejak Juni 2023</p>
+                            <span class="badge bg-primary">Verified <i class="fas fa-check-circle ms-1"></i></span>
                         </div>
                         
-                        <ul class="account-menu">
-                            <li><a href="#account-dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                            <li><a href="#account-history"><i class="fas fa-history"></i> Riwayat Transaksi</a></li>
-                            <li><a href="#account-profile"><i class="fas fa-user"></i> Profil Saya</a></li>
-                            <li><a href="#account-security"><i class="fas fa-lock"></i> Keamanan</a></li>
-                            <li><a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#dashboard">
+                                    <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#transactions">
+                                    <i class="fas fa-history me-2"></i> Riwayat Transaksi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#profile">
+                                    <i class="fas fa-user me-2"></i> Profil Saya
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#security">
+                                    <i class="fas fa-lock me-2"></i> Keamanan
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
+                
                 <div class="col-lg-9">
-                    <div class="product-detail">
-                        <div id="account-dashboard">
-                            <h4 class="mb-4">Dashboard Akun</h4>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h4 class="mb-4">Selamat datang kembali, <span id="display-name">John</span>!</h4>
+                            
+                            <div class="alert alert-success">
+                                <i class="fas fa-gift me-2"></i> Anda memiliki <strong>1250 Poin Reward</strong> yang dapat ditukarkan!
+                            </div>
+                            
                             <div class="row mb-4">
-                                <div class="col-md-4 mb-3">
-                                    <div class="card border-0 bg-primary bg-opacity-10 h-100">
+                                <div class="col-md-6 mb-3">
+                                    <div class="card border-0 bg-light h-100">
                                         <div class="card-body">
-                                            <h6 class="text-muted">Total Transaksi</h6>
-                                            <h3 class="mb-0">12</h3>
+                                            <h5><i class="fas fa-shopping-cart me-2"></i> Transaksi Terakhir</h5>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <div>
+                                                    <h6 class="mb-0">Mobile Legends</h6>
+                                                    <small class="text-muted">15 Jun 2023</small>
+                                                </div>
+                                                <div class="text-end">
+                                                    <h6 class="mb-0">100 Diamond</h6>
+                                                    <span class="badge bg-success">Sukses</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card border-0 bg-success bg-opacity-10 h-100">
+                                
+                                <div class="col-md-6 mb-3">
+                                    <div class="card border-0 bg-light h-100">
                                         <div class="card-body">
-                                            <h6 class="text-muted">Transaksi Sukses</h6>
-                                            <h3 class="mb-0">10</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card border-0 bg-warning bg-opacity-10 h-100">
-                                        <div class="card-body">
-                                            <h6 class="text-muted">Dalam Proses</h6>
-                                            <h3 class="mb-0">2</h3>
+                                            <h5><i class="fas fa-bell me-2"></i> Notifikasi</h5>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <div>
+                                                    <h6 class="mb-0">Promo Spesial</h6>
+                                                    <small class="text-muted">Hari ini</small>
+                                                </div>
+                                                <div>
+                                                    <span class="badge bg-danger">2 Baru</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <h5 class="mb-3">Transaksi Terakhir</h5>
-                            <div class="transaction-card">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h5 class="mb-0">Mobile Legends Diamond</h5>
-                                    <span class="badge bg-success">Sukses</span>
-                                </div>
-                                <p class="mb-1"><strong>ID Game:</strong> 12345678</p>
-                                <p class="mb-1"><strong>Server:</strong> Asia</p>
-                                <p class="mb-1"><strong>Nominal:</strong> 100 Diamond</p>
-                                <p class="mb-1"><strong>Harga:</strong> Rp 25.000</p>
-                                <p class="mb-1"><strong>Metode Pembayaran:</strong> QRIS</p>
-                                <p class="mb-1"><strong>Invoice:</strong> INV-20230615-001</p>
-                                <p class="mb-0"><strong>Waktu:</strong> 15 Juni 2023, 14:30 WIB</p>
-                            </div>
-                            
-                            <div class="transaction-card">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h5 class="mb-0">Free Fire Diamonds</h5>
-                                    <span class="badge bg-warning">Proses</span>
-                                </div>
-                                <p class="mb-1"><strong>ID Game:</strong> 87654321</p>
-                                <p class="mb-1"><strong>Server:</strong> Asia</p>
-                                <p class="mb-1"><strong>Nominal:</strong> 500 Diamonds</p>
-                                <p class="mb-1"><strong>Harga:</strong> Rp 75.000</p>
-                                <p class="mb-1"><strong>Metode Pembayaran:</strong> Bank Transfer</p>
-                                <p class="mb-1"><strong>Invoice:</strong> INV-20230614-002</p>
-                                <p class="mb-0"><strong>Waktu:</strong> 14 Juni 2023, 09:15 WIB</p>
-                            </div>
-                        </div>
-                        
-                        <div id="account-history" style="display: none;">
-                            <h4 class="mb-4">Riwayat Transaksi</h4>
+                            <h5 class="mb-3">Aktivitas Terkini</h5>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>Invoice</th>
-                                            <th>Produk</th>
                                             <th>Tanggal</th>
+                                            <th>Aktivitas</th>
                                             <th>Status</th>
-                                            <th>Total</th>
-                                            <th>Aksi</th>
+                                            <th>Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>INV-20230615-001</td>
-                                            <td>Mobile Legends Diamond</td>
                                             <td>15 Jun 2023</td>
+                                            <td>Top Up Mobile Legends</td>
                                             <td><span class="badge bg-success">Sukses</span></td>
-                                            <td>Rp 25.000</td>
-                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Detail</a></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Lihat</a></td>
                                         </tr>
                                         <tr>
-                                            <td>INV-20230614-002</td>
-                                            <td>Free Fire Diamonds</td>
                                             <td>14 Jun 2023</td>
-                                            <td><span class="badge bg-warning">Proses</span></td>
-                                            <td>Rp 75.000</td>
-                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Detail</a></td>
+                                            <td>Ganti Password</td>
+                                            <td><span class="badge bg-info">Sistem</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Lihat</a></td>
                                         </tr>
                                         <tr>
-                                            <td>INV-20230610-003</td>
-                                            <td>PUBG Mobile UC</td>
                                             <td>10 Jun 2023</td>
+                                            <td>Top Up PUBG Mobile</td>
                                             <td><span class="badge bg-success">Sukses</span></td>
-                                            <td>Rp 120.000</td>
-                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Detail</a></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Lihat</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        
-                        <div id="account-profile" style="display: none;">
-                            <h4 class="mb-4">Profil Saya</h4>
-                            <form>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="first-name" class="form-label">Nama Depan</label>
-                                        <input type="text" class="form-control" id="first-name" value="John">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="last-name" class="form-label">Nama Belakang</label>
-                                        <input type="text" class="form-control" id="last-name" value="Doe">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" value="john.doe@example.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Nomor Telepon</label>
-                                    <input type="tel" class="form-control" id="phone" value="+6281234567890">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                            </form>
-                        </div>
-                        
-                        <div id="account-security" style="display: none;">
-                            <h4 class="mb-4">Keamanan Akun</h4>
-                            <form>
-                                <div class="mb-3">
-                                    <label for="current-password" class="form-label">Password Saat Ini</label>
-                                    <input type="password" class="form-control" id="current-password">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="new-password" class="form-label">Password Baru</label>
-                                    <input type="password" class="form-control" id="new-password">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="confirm-password" class="form-label">Konfirmasi Password Baru</label>
-                                    <input type="password" class="form-control" id="confirm-password">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Ubah Password</button>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle password visibility
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            const passwordInput = document.getElementById('login-password');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get input values
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const rememberMe = document.getElementById('remember-me').checked;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Silakan isi email dan password');
+                return;
+            }
+            
+            // Simulate login (in a real app, you would call your backend API)
+            setTimeout(() => {
+                // Hide login form
+                document.getElementById('login-section').style.display = 'none';
+                
+                // Show account section
+                document.getElementById('account-section').style.display = 'block';
+                
+                // Update user info
+                document.getElementById('user-name').textContent = 'John Doe';
+                document.getElementById('display-name').textContent = 'John';
+                
+                // Store login state (simplified)
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }, 500);
+        });
+        
+        // Handle logout
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            // Clear login state
+            localStorage.removeItem('isLoggedIn');
+            
+            // Show login form
+            document.getElementById('login-section').style.display = 'block';
+            
+            // Hide account section
+            document.getElementById('account-section').style.display = 'none';
+            
+            // Reset form
+            document.getElementById('login-form').reset();
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        });
+        
+        // Check login state on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (isLoggedIn === 'true') {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('account-section').style.display = 'block';
+            } else {
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('account-section').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
 
     <!-- Help Center Section -->
     <section id="help-center" class="py-5 bg-light" style="display: none;">
