@@ -3,272 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameTopUp | Top Up Game Termurah & Tercepat</title>
-    <link href="https://sdmntpreastus2.oaiusercontent.com/files/00000000-254c-61f6-8294-b351b61b6428/raw?se=2025-05-04T14%3A01%3A00Z&sp=r&sv=2024-08-04&sr=b&scid=4fafc78b-2401-5c10-b8a1-255ee2f74e25&skoid=de76bc29-7017-43d4-8d90-7a49512bae0f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-03T19%3A37%3A09Z&ske=2025-05-04T19%3A37%3A09Z&sks=b&skv=2024-08-04&sig=GiD/byOquzj548FdyPAbrJXySyPLiKBJI7I8MK59oqA%3D" rel="stylesheet">
+    <title>GameTopUp - Top Up Game Murah & Cepat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
             --primary-dark: #0a192f;
-            --primary-dark-2: #172a45;
-            --primary-light: #ffffff;
-            --accent-color: #00f2fe;
-            --accent-color-2: #4facfe;
-            --accent-hover: #00c9fe;
-            --text-dark: #333333;
-            --text-light: #f8f9fa;
-            --gray-light: #e9ecef;
-            --gray-medium: #6c757d;
-            --gradient: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-2) 100%);
+            --primary-blue: #172a45;
+            --accent-teal: #64ffda;
+            --accent-light: #ccd6f6;
+            --white: #ffffff;
+            --gray: #8892b0;
         }
         
         body {
-            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-            color: var(--text-dark);
-            background-color: var(--primary-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
         
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--gray-light);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-color);
-            border-radius: 10px;
-        }
-        
-        /* Header Styles */
         .navbar {
-            background-color: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background-color: var(--primary-dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .navbar-brand img {
             height: 40px;
-            transition: all 0.3s ease;
         }
         
-        .nav-link {
-            color: var(--primary-light) !important;
-            font-weight: 500;
-            margin: 0 12px;
-            transition: all 0.3s ease;
-            position: relative;
+        .btn-primary {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
         }
         
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: all 0.3s ease;
+        .btn-outline-primary {
+            color: var(--primary-dark);
+            border-color: var(--primary-dark);
         }
         
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
+        .btn-primary:hover, .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            border-color: var(--primary-blue);
         }
         
-        .nav-link:hover {
-            color: var(--accent-color) !important;
+        .btn-accent {
+            background-color: var(--accent-teal);
+            color: var(--primary-dark);
+            font-weight: 600;
         }
         
-        .dropdown-menu {
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
+        .btn-accent:hover {
+            background-color: transparent;
+            color: var(--accent-teal);
+            border-color: var(--accent-teal);
         }
         
-        .dropdown-item {
-            padding: 8px 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .dropdown-item:hover {
-            background: var(--gradient);
-            color: white !important;
-        }
-        
-        .btn-login {
-            background: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            border-radius: 30px;
-            padding: 8px 25px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-login::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            transition: all 0.3s ease;
-            z-index: -1;
-        }
-        
-        .btn-login:hover {
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.3);
-        }
-        
-        .btn-login:hover::before {
-            left: 0;
-        }
-        
-        /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-dark-2) 100%);
-            color: var(--primary-light);
-            padding: 120px 0 100px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 5rem 0;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-bg {
+        .hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(0, 242, 254, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(79, 172, 254, 0.1) 0%, transparent 30%);
-            animation: pulse 15s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
         }
         
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
         
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 600px;
-        }
-        
-        .hero-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .btn-hero {
-            background: var(--gradient);
-            color: white;
-            font-weight: 600;
-            padding: 15px 40px;
-            border-radius: 30px;
-            border: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
-        }
-        
-        .btn-hero:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.4);
-        }
-        
-        .btn-hero-outline {
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            margin-left: 15px;
-        }
-        
-        .btn-hero-outline:hover {
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--accent-color);
-        }
-        
-        .hero-image {
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        /* Popular Games Section */
         .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 30px;
             color: var(--primary-dark);
             position: relative;
             display: inline-block;
+            margin-bottom: 2rem;
         }
         
         .section-title::after {
@@ -277,1212 +98,1087 @@
             bottom: -10px;
             left: 0;
             width: 50px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            color: var(--gray-medium);
-            margin-bottom: 40px;
-            max-width: 700px;
+            height: 3px;
+            background-color: var(--accent-teal);
         }
         
         .game-card {
-            border-radius: 15px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 20px;
             border: none;
-            position: relative;
         }
         
         .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
         
-        .game-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--gradient);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        
-        .game-img {
-            height: 180px;
+        .game-card img {
+            height: 150px;
             object-fit: cover;
+        }
+        
+        .game-card .card-body {
+            padding: 1.5rem;
+        }
+        
+        .game-card .card-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-card .btn {
             width: 100%;
-            transition: all 0.5s ease;
         }
         
-        .game-card:hover .game-img {
-            transform: scale(1.05);
-        }
-        
-        .game-body {
-            padding: 20px;
-        }
-        
-        .game-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--primary-dark);
-        }
-        
-        .game-price {
-            color: var(--accent-color);
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .game-discount {
-            text-decoration: line-through;
-            color: var(--gray-medium);
-            font-size: 0.9rem;
-            margin-left: 5px;
-        }
-        
-        .btn-topup {
-            background: var(--primary-dark);
-            color: var(--primary-light);
-            border: none;
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .btn-topup i {
-            margin-right: 8px;
-        }
-        
-        .btn-topup:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .view-all {
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .btn-view-all {
-            background: transparent;
-            color: var(--primary-dark);
-            border: 1px solid var(--primary-dark);
-            padding: 10px 30px;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .btn-view-all i {
-            margin-left: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-view-all:hover {
-            background: var(--primary-dark);
-            color: white;
-        }
-        
-        .btn-view-all:hover i {
-            transform: translateX(5px);
-        }
-        
-        /* Features Section */
-        .features-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-title {
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-        }
-        
-        .feature-text {
-            color: var(--gray-medium);
-        }
-        
-        /* Testimonials */
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            position: relative;
-            margin: 15px;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(0, 242, 254, 0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-        
-        .testimonial-text {
-            position: relative;
-            z-index: 2;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-        
-        .author-name {
-            font-weight: 600;
-            margin-bottom: 0;
-        }
-        
-        .author-game {
-            font-size: 0.9rem;
-            color: var(--gray-medium);
-        }
-        
-        /* Promo Banner */
-        .promo-banner {
-            background: var(--gradient);
-            color: white;
-            padding: 40px;
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .promo-banner::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .promo-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .promo-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .promo-text {
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-        
-        .btn-promo {
-            background: white;
-            color: var(--primary-dark);
-            font-weight: 600;
-            padding: 12px 30px;
-            border-radius: 30px;
-            border: none;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-promo:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Footer */
-        .footer {
+        footer {
             background-color: var(--primary-dark);
-            color: var(--primary-light);
-            padding: 70px 0 30px;
-            position: relative;
+            color: white;
+            padding: 3rem 0;
         }
         
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient);
+        footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
         
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: var(--accent-color);
-            position: relative;
+        footer a:hover {
+            color: var(--accent-teal);
+        }
+        
+        .social-icons a {
             display: inline-block;
-        }
-        
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: var(--gradient);
-        }
-        
-        .footer-logo {
-            height: 40px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-about {
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-        
-        .footer-link {
-            color: var(--gray-light);
-            display: block;
-            margin-bottom: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            padding-left: 15px;
-        }
-        
-        .footer-link::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-link:hover {
-            color: var(--accent-color);
-            padding-left: 20px;
-            text-decoration: none;
-        }
-        
-        .footer-link:hover::before {
-            opacity: 1;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: var(--primary-blue);
             color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
             transition: all 0.3s ease;
         }
         
-        .social-link:hover {
-            background: var(--gradient);
-            color: white;
+        .social-icons a:hover {
+            background-color: var(--accent-teal);
+            color: var(--primary-dark);
             transform: translateY(-3px);
         }
         
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-top: 50px;
-            color: var(--gray-medium);
-            font-size: 0.9rem;
-        }
-        
-        /* Mobile Bottom Navigation */
         .mobile-nav {
             position: fixed;
             bottom: 0;
             left: 0;
-            right: 0;
-            background: rgba(10, 25, 47, 0.98);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 0;
+            width: 100%;
+            background-color: var(--primary-dark);
             z-index: 1000;
-            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
             display: none;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .mobile-nav-item {
-            color: var(--primary-light);
+            padding: 10px;
             text-align: center;
-            text-decoration: none;
-            font-size: 0.7rem;
-            transition: all 0.3s ease;
-            flex: 1;
-            position: relative;
+            color: white;
+            font-size: 0.8rem;
         }
         
         .mobile-nav-item i {
             display: block;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-bottom: 5px;
         }
         
         .mobile-nav-item.active {
-            color: var(--accent-color);
+            color: var(--accent-teal);
         }
         
-        .mobile-nav-item::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--gradient);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav-item.active::after {
-            opacity: 1;
-        }
-        
-        /* Product Detail Modal */
-        .modal-content {
-            border-radius: 15px;
-            border: none;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-        }
-        
-        .modal-header {
-            background: var(--gradient);
-            color: var(--primary-light);
-            border-radius: 0;
-            border: none;
-            padding: 20px;
-        }
-        
-        .modal-title {
-            font-weight: 600;
-        }
-        
-        .close {
-            color: var(--primary-light);
-            opacity: 1;
-            text-shadow: none;
-        }
-        
-        .modal-body {
-            padding: 30px;
-        }
-        
-        .game-modal-title {
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .game-modal-icon {
-            width: 40px;
-            height: 40px;
+        .product-detail {
+            background-color: white;
             border-radius: 10px;
-            object-fit: cover;
-            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
         }
         
-        .form-label {
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-        
-        .form-control {
+        .product-detail img {
             border-radius: 10px;
-            padding: 12px 15px;
-            border: 1px solid var(--gray-light);
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 0.25rem rgba(0, 242, 254, 0.25);
+            margin-bottom: 1.5rem;
+            width: 100%;
+            height: auto;
         }
         
         .payment-method {
-            border: 1px solid var(--gray-light);
-            border-radius: 10px;
+            border: 1px solid #eee;
+            border-radius: 5px;
             padding: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
         }
         
         .payment-method:hover {
-            border-color: var(--accent-color);
-            background-color: rgba(0, 242, 254, 0.05);
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 1px var(--accent-teal);
         }
         
         .payment-method.selected {
-            border-color: var(--accent-color);
-            background-color: rgba(0, 242, 254, 0.1);
+            border-color: var(--accent-teal);
+            background-color: rgba(100, 255, 218, 0.1);
         }
         
-        .payment-icon {
-            font-size: 1.8rem;
-            margin-right: 15px;
-            color: var(--gray-medium);
-            width: 40px;
+        .payment-method img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .account-menu {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .account-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .account-menu a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .account-menu a:hover, .account-menu a.active {
+            background-color: rgba(100, 255, 218, 0.2);
+            color: var(--primary-dark);
+        }
+        
+        .account-menu a i {
+            margin-right: 10px;
+            width: 20px;
             text-align: center;
         }
         
-        .payment-info h6 {
-            margin-bottom: 3px;
-        }
-        
-        .payment-info small {
-            color: var(--gray-medium);
-        }
-        
-        .btn-pay {
-            background: var(--gradient);
-            color: white;
-            font-weight: 600;
-            padding: 15px;
+        .transaction-card {
+            border: 1px solid #eee;
             border-radius: 10px;
-            border: none;
-            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
             transition: all 0.3s ease;
-            margin-top: 20px;
         }
         
-        .btn-pay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.3);
+        .transaction-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        /* Responsive Adjustments */
-        @media (max-width: 1199.98px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
+        .status-pending {
+            color: #ffc107;
+        }
+        
+        .status-processing {
+            color: #17a2b8;
+        }
+        
+        .status-success {
+            color: #28a745;
+        }
+        
+        .status-failed {
+            color: #dc3545;
+        }
+        
+        .help-center .card {
+            margin-bottom: 15px;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-center .card-header {
+            background-color: white;
+            border-bottom: none;
+            cursor: pointer;
+        }
+        
+        .help-center .card-header:hover {
+            background-color: #f8f9fa;
         }
         
         @media (max-width: 991.98px) {
-            .hero-section {
-                padding: 100px 0 80px;
-            }
-            
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-image {
-                margin-top: 50px;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-        }
-        
-        @media (max-width: 767.98px) {
-            .navbar {
-                padding: 10px 0;
-            }
-            
-            .navbar-brand img {
-                height: 35px;
-            }
-            
-            .hero-section {
-                padding: 80px 0 60px;
-                text-align: center;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                justify-content: center;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-            
             .mobile-nav {
                 display: flex;
+                justify-content: space-around;
+            }
+            
+            body {
+                padding-bottom: 70px;
+            }
+            
+            .navbar-collapse {
+                background-color: var(--primary-dark);
+                padding: 1rem;
+                margin-top: 10px;
+                border-radius: 5px;
             }
         }
         
-        @media (max-width: 575.98px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .btn-hero {
-                padding: 12px 30px;
-            }
-            
-            .section-title {
-                font-size: 1.4rem;
-            }
-            
-            .promo-banner {
-                padding: 30px 20px;
-            }
-            
-            .promo-title {
-                font-size: 1.5rem;
-            }
-            
-            .modal-body {
-                padding: 20px;
-            }
-        }
-        
-        /* Animation Classes */
-        .fade-in {
-            animation: fadeIn 0.8s ease-in forwards;
-        }
-        
+        /* Animation */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .slide-up {
-            animation: slideUp 0.8s ease-out forwards;
+        .animate-fadein {
+            animation: fadeIn 0.5s ease forwards;
         }
         
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .slide-left {
-            animation: slideLeft 0.8s ease-out forwards;
-        }
-        
-        @keyframes slideLeft {
-            from { 
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .slide-right {
-            animation: slideRight 0.8s ease-out forwards;
-        }
-        
-        @keyframes slideRight {
-            from { 
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-        
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-        
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-        
-        .delay-4 {
-            animation-delay: 0.8s;
-        }
-        
-        /* Floating Elements */
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating-2 {
-            animation: floating 4s ease-in-out infinite;
-            animation-delay: 0.5s;
-        }
-        
-        /* Pulse Animation */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Gradient Text */
-        .gradient-text {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <!-- Header Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Desktop Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="https://via.placeholder.com/150x50?text=GameTopUp" alt="GameTopUp Logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars text-white"></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link active" href="#home">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="topupDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="topupDropdown" role="button" data-bs-toggle="dropdown">
                             Top Up
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="topupDropdown">
-                            <li><a class="dropdown-item" href="#"><img src="https://via.placeholder.com/20x20?text=ML" alt="Mobile Legends" class="me-2" width="20"> Mobile Legends</a></li>
-                            <li><a class="dropdown-item" href="#"><img src="https://via.placeholder.com/20x20?text=FF" alt="Free Fire" class="me-2" width="20"> Free Fire</a></li>
-                            <li><a class="dropdown-item" href="#"><img src="https://via.placeholder.com/20x20?text=PB" alt="PUBG" class="me-2" width="20"> PUBG Mobile</a></li>
-                            <li><a class="dropdown-item" href="#"><img src="https://via.placeholder.com/20x20?text=VL" alt="Valorant" class="me-2" width="20"> Valorant</a></li>
-                            <li><a class="dropdown-item" href="#"><img src="https://via.placeholder.com/20x20?text=GI" alt="Genshin" class="me-2" width="20"> Genshin Impact</a></li>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#mobile-legends">Mobile Legends</a></li>
+                            <li><a class="dropdown-item" href="#free-fire">Free Fire</a></li>
+                            <li><a class="dropdown-item" href="#pubg-mobile">PUBG Mobile</a></li>
+                            <li><a class="dropdown-item" href="#valorant">Valorant</a></li>
+                            <li><a class="dropdown-item" href="#genshin-impact">Genshin Impact</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-gamepad me-2"></i> Lihat Semua Game</a></li>
+                            <li><a class="dropdown-item" href="#all-games">Lihat Semua Game</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Beli Akun</a>
+                        <a class="nav-link" href="#buy-account">Beli Akun</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sewa Akun</a>
+                        <a class="nav-link" href="#rent-account">Sewa Akun</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Voucher</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cek Pesanan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#helpModal">Bantuan</a>
+                        <a class="nav-link" href="#help">Bantuan</a>
                     </li>
                 </ul>
-                <div class="d-flex ms-lg-3">
-                    <button class="btn btn-login">
-                        <i class="fas fa-user me-2"></i>Login
-                    </button>
+                <div class="d-flex">
+                    <a href="#account" class="btn btn-outline-light me-2">
+                        <i class="fas fa-user me-1"></i> Akun
+                    </a>
+                    <a href="#check-order" class="btn btn-accent">
+                        <i class="fas fa-receipt me-1"></i> Cek Pesanan
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <a href="#home" class="mobile-nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#topup" class="mobile-nav-item">
+            <i class="fas fa-gamepad"></i>
+            <span>Top Up</span>
+        </a>
+        <a href="#check-order" class="mobile-nav-item">
+            <i class="fas fa-receipt"></i>
+            <span>Pesanan</span>
+        </a>
+        <a href="#help" class="mobile-nav-item">
+            <i class="fas fa-question-circle"></i>
+            <span>Bantuan</span>
+        </a>
+        <a href="#account" class="mobile-nav-item">
+            <i class="fas fa-user"></i>
+            <span>Akun</span>
+        </a>
+    </div>
+
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-bg"></div>
-        <div class="container position-relative">
+    <section class="hero-section" id="home">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <h1 class="hero-title slide-up">Top Up Game <span class="gradient-text">Murah & Cepat</span></h1>
-                    <p class="hero-subtitle slide-up delay-1">Diamond, Voucher, dan Item Game dengan harga termurah dan proses instan hanya dalam hitungan detik!</p>
-                    <div class="hero-buttons slide-up delay-2">
-                        <button class="btn btn-hero">Mulai Top Up Sekarang</button>
-                        <button class="btn btn-hero-outline">Lihat Promo</button>
-                    </div>
-                    <div class="hero-stats slide-up delay-3">
-                        <div class="stat-item">
-                            <div class="stat-number">50K+</div>
-                            <div class="stat-label">Pengguna</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Game</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Layanan</div>
-                        </div>
+                <div class="col-lg-6 hero-content animate-fadein">
+                    <h1 class="display-4 fw-bold mb-4">Top Up Game Murah & Cepat</h1>
+                    <p class="lead mb-4">Isi diamond, Voucher, atau koin game favoritmu dengan harga termurah dan proses instan!</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#topup" class="btn btn-accent btn-lg px-4">
+                            <i class="fas fa-bolt me-2"></i> Mulai Top Up
+                        </a>
+                        <a href="#how-to" class="btn btn-outline-light btn-lg px-4">
+                            <i class="fas fa-info-circle me-2"></i> Cara Order
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://via.placeholder.com/600x500?text=Game+Characters" alt="Game Characters" class="img-fluid hero-image floating">
+                <div class="col-lg-6 d-none d-lg-block animate-fadein delay-1">
+                    <img src="https://via.placeholder.com/600x400" alt="Hero Image" class="img-fluid rounded">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Popular Games Section -->
-    <section class="py-5" id="popular-games">
+    <section class="py-5 bg-white">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title fade-in">Game Populer</h2>
-                <p class="section-subtitle fade-in delay-1">Top up game favoritmu dengan harga termurah dan proses paling cepat</p>
-            </div>
+            <h2 class="section-title animate-fadein">Game Populer</h2>
             <div class="row">
                 <!-- Game 1 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="0">
-                    <div class="card game-card h-100">
-                        <span class="game-badge">Promo</span>
-                        <img src="https://via.placeholder.com/300x200?text=Mobile+Legends" class="card-img-top game-img" alt="Mobile Legends">
-                        <div class="game-body">
-                            <h5 class="game-title">Mobile Legends</h5>
-                            <div class="game-price">Rp 10.000 <span class="game-discount">Rp 12.000</span></div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="Mobile Legends">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4 animate-fadein delay-1">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Mobile+Legends" class="card-img-top" alt="Mobile Legends">
+                        <div class="card-body">
+                            <h5 class="card-title">Mobile Legends</h5>
+                            <a href="#mobile-legends" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Game 2 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card game-card h-100">
-                        <img src="https://via.placeholder.com/300x200?text=Free+Fire" class="card-img-top game-img" alt="Free Fire">
-                        <div class="game-body">
-                            <h5 class="game-title">Free Fire</h5>
-                            <div class="game-price">Rp 15.000</div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="Free Fire">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4 animate-fadein delay-2">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Free+Fire" class="card-img-top" alt="Free Fire">
+                        <div class="card-body">
+                            <h5 class="card-title">Free Fire</h5>
+                            <a href="#free-fire" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Game 3 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card game-card h-100">
-                        <span class="game-badge">Best Seller</span>
-                        <img src="https://via.placeholder.com/300x200?text=PUBG+Mobile" class="card-img-top game-img" alt="PUBG Mobile">
-                        <div class="game-body">
-                            <h5 class="game-title">PUBG Mobile</h5>
-                            <div class="game-price">Rp 20.000 <span class="game-discount">Rp 25.000</span></div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="PUBG Mobile">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4 animate-fadein delay-3">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=PUBG+Mobile" class="card-img-top" alt="PUBG Mobile">
+                        <div class="card-body">
+                            <h5 class="card-title">PUBG Mobile</h5>
+                            <a href="#pubg-mobile" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Game 4 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card game-card h-100">
-                        <img src="https://via.placeholder.com/300x200?text=Valorant" class="card-img-top game-img" alt="Valorant">
-                        <div class="game-body">
-                            <h5 class="game-title">Valorant</h5>
-                            <div class="game-price">Rp 30.000</div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="Valorant">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4 animate-fadein delay-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Valorant" class="card-img-top" alt="Valorant">
+                        <div class="card-body">
+                            <h5 class="card-title">Valorant</h5>
+                            <a href="#valorant" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Game 5 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="0">
-                    <div class="card game-card h-100">
-                        <img src="https://via.placeholder.com/300x200?text=Genshin+Impact" class="card-img-top game-img" alt="Genshin Impact">
-                        <div class="game-body">
-                            <h5 class="game-title">Genshin Impact</h5>
-                            <div class="game-price">Rp 50.000 <span class="game-discount">Rp 60.000</span></div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="Genshin Impact">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Genshin+Impact" class="card-img-top" alt="Genshin Impact">
+                        <div class="card-body">
+                            <h5 class="card-title">Genshin Impact</h5>
+                            <a href="#genshin-impact" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Game 6 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card game-card h-100">
-                        <span class="game-badge">New</span>
-                        <img src="https://via.placeholder.com/300x200?text=Call+of+Duty" class="card-img-top game-img" alt="Call of Duty">
-                        <div class="game-body">
-                            <h5 class="game-title">Call of Duty</h5>
-                            <div class="game-price">Rp 25.000</div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="Call of Duty">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Call+of+Duty" class="card-img-top" alt="Call of Duty">
+                        <div class="card-body">
+                            <h5 class="card-title">Call of Duty</h5>
+                            <a href="#call-of-duty" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Game 7 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card game-card h-100">
-                        <img src="https://via.placeholder.com/300x200?text=Apex+Legends" class="card-img-top game-img" alt="Apex Legends">
-                        <div class="game-body">
-                            <h5 class="game-title">Apex Legends</h5>
-                            <div class="game-price">Rp 35.000</div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="Apex Legends">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=League+of+Legends" class="card-img-top" alt="League of Legends">
+                        <div class="card-body">
+                            <h5 class="card-title">League of Legends</h5>
+                            <a href="#league-of-legends" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Game 8 -->
-                <div class="col-6 col-md-4 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card game-card h-100">
-                        <span class="game-badge">Trending</span>
-                        <img src="https://via.placeholder.com/300x200?text=League+of+Legends" class="card-img-top game-img" alt="League of Legends">
-                        <div class="game-body">
-                            <h5 class="game-title">League of Legends</h5>
-                            <div class="game-price">Rp 40.000 <span class="game-discount">Rp 45.000</span></div>
-                            <button class="btn btn-topup" data-bs-toggle="modal" data-bs-target="#productModal" data-game="League of Legends">
-                                <i class="fas fa-bolt"></i> Top Up Sekarang
-                            </button>
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Apex+Legends" class="card-img-top" alt="Apex Legends">
+                        <div class="card-body">
+                            <h5 class="card-title">Apex Legends</h5>
+                            <a href="#apex-legends" class="btn btn-primary">Top Up Sekarang</a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="view-all" data-aos="fade-up">
-                <button class="btn btn-view-all">
-                    Lihat Semua Game <i class="fas fa-arrow-right"></i>
-                </button>
+            <div class="text-center mt-4">
+                <a href="#all-games" class="btn btn-outline-primary px-4">
+                    <i class="fas fa-eye me-2"></i> Lihat Semua Game
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title fade-in">Kenapa Memilih Kami?</h2>
-                <p class="section-subtitle fade-in delay-1">Kami memberikan pengalaman top up terbaik untuk gamers Indonesia</p>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="0">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <h3 class="feature-title">Proses Cepat</h3>
-                        <p class="feature-text">Diamond atau item game akan masuk ke akun Anda dalam waktu kurang dari 3 menit setelah pembayaran berhasil.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <h3 class="feature-title">100% Aman</h3>
-                        <p class="feature-text">Transaksi aman dengan sistem pembayaran terenkripsi dan garansi uang kembali jika diamond tidak masuk.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-tags"></i>
-                        </div>
-                        <h3 class="feature-title">Harga Termurah</h3>
-                        <p class="feature-text">Kami memberikan harga termurah dibandingkan platform top up game lainnya dengan promo menarik setiap hari.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3 class="feature-title">Bantuan 24/7</h3>
-                        <p class="feature-text">Tim customer service siap membantu Anda kapan saja melalui live chat, WhatsApp, dan telepon.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-5 bg-white">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title fade-in">Apa Kata Mereka?</h2>
-                <p class="section-subtitle fade-in delay-1">Testimoni dari gamers yang sudah menggunakan layanan kami</p>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="0">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">Top up di sini selalu cepat prosesnya, harga juga lebih murah dibanding tempat lain. Recomended banget!</p>
-                        <div class="testimonial-author">
-                            <img src="https://via.placeholder.com/50x50?text=User1" alt="User" class="author-avatar">
-                            <div>
-                                <h6 class="author-name">Andi Pratama</h6>
-                                <p class="author-game">Mobile Legends Player</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">CS-nya ramah dan responsif, diamond masuk kurang dari 2 menit setelah bayar. Aku selalu top up di sini!</p>
-                        <div class="testimonial-author">
-                            <img src="https://via.placeholder.com/50x50?text=User2" alt="User" class="author-avatar">
-                            <div>
-                                <h6 class="author-name">Sarah Wijaya</h6>
-                                <p class="author-game">Free Fire Player</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">Pertama kali coba top up Valorant di sini, prosesnya mudah dan cepat. Bakal jadi langganan nih!</p>
-                        <div class="testimonial-author">
-                            <img src="https://via.placeholder.com/50x50?text=User3" alt="User" class="author-avatar">
-                            <div>
-                                <h6 class="author-name">Rizky Ramadhan</h6>
-                                <p class="author-game">Valorant Player</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Promo Banner -->
-    <section class="py-5">
-        <div class="container">
-            <div class="promo-banner" data-aos="fade-up">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <div class="promo-content">
-                            <h3 class="promo-title">Promo Spesial Hari Ini!</h3>
-                            <p class="promo-text">Dapatkan diskon hingga 30% untuk top up semua game dengan kode promo <strong>GAMETOPUP30</strong>. Berlaku hingga 31 Desember 2023.</p>
-                            <button class="btn btn-promo">Lihat Semua Promo</button>
-                        </div>
-                    </div>
-                    <div class="col-md-4 d-none d-md-block">
-                        <img src="https://via.placeholder.com/300x200?text=Promo+Image" alt="Promo" class="img-fluid floating-2">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How to Order Section -->
+    <!-- How It Works Section -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title fade-in">Cara Top Up</h2>
-                <p class="section-subtitle fade-in delay-1">Hanya 4 langkah mudah untuk top up game favoritmu</p>
+            <h2 class="section-title">Cara Top Up</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-search fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">1. Pilih Game</h5>
+                            <p class="card-text">Cari game favoritmu dari daftar game yang tersedia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-money-bill-wave fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">2. Pilih Nominal</h5>
+                            <p class="card-text">Pilih jumlah diamond, koin, atau voucher yang ingin dibeli.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-3 mx-auto" style="width: 70px; height: 70px;">
+                                <i class="fas fa-truck fa-2x"></i>
+                            </div>
+                            <h5 class="card-title">3. Proses Instan</h5>
+                            <p class="card-text">Pembayaran selesai, item akan langsung masuk ke akun game Anda.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Section (Hidden by default, shown when a game is selected) -->
+    <section id="product-detail" class="py-5 bg-white" style="display: none;">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-6 mb-4" data-aos="fade-right">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <h4 class="card-title mb-4">Langkah-langkah Top Up</h4>
-                            <div class="d-flex mb-4">
-                                <div class="me-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">1</div>
+                <div class="col-lg-4">
+                    <div class="product-detail sticky-top" style="top: 20px;">
+                        <img src="https://via.placeholder.com/400x300" alt="Game Image" id="detail-game-image" class="img-fluid">
+                        <h3 id="detail-game-title">Mobile Legends</h3>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary btn-lg" id="buy-now-btn">
+                                <i class="fas fa-shopping-cart me-2"></i> Beli Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="product-detail">
+                        <h4 class="mb-4">Pilih Nominal Top Up</h4>
+                        <div class="row" id="denomination-list">
+                            <!-- Denominations will be loaded here -->
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h4 class="mb-4">Masukkan Data Akun</h4>
+                        <form id="account-form">
+                            <div class="mb-3">
+                                <label for="game-id" class="form-label">ID Game</label>
+                                <input type="text" class="form-control" id="game-id" placeholder="Masukkan ID Game" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="server" class="form-label">Server</label>
+                                <select class="form-select" id="server" required>
+                                    <option value="" selected disabled>Pilih Server</option>
+                                    <option value="asia">Asia</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="america">America</option>
+                                </select>
+                            </div>
+                            
+                            <hr class="my-4">
+                            
+                            <h4 class="mb-4">Metode Pembayaran</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="payment-method" data-method="qris">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/100x50?text=QRIS" alt="QRIS">
+                                            <div>
+                                                <h6 class="mb-0">QRIS</h6>
+                                                <small class="text-muted">Pembayaran via QR Code</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h5>Pilih Game & Produk</h5>
-                                    <p class="text-muted mb-0">Pilih game yang ingin Anda top up dan nominal diamond/koin/item yang diinginkan.</p>
+                                <div class="col-md-6 mb-3">
+                                    <div class="payment-method" data-method="bank-transfer">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/100x50?text=Bank+Transfer" alt="Bank Transfer">
+                                            <div>
+                                                <h6 class="mb-0">Transfer Bank</h6>
+                                                <small class="text-muted">BNI, BRI, BCA, Mandiri</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="payment-method" data-method="gopay">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/100x50?text=Gopay" alt="Gopay">
+                                            <div>
+                                                <h6 class="mb-0">Gopay</h6>
+                                                <small class="text-muted">Pembayaran via Gopay</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="payment-method" data-method="ovo">
+                                        <div class="d-flex align-items-center">
+                                            <img src="https://via.placeholder.com/100x50?text=OVO" alt="OVO">
+                                            <div>
+                                                <h6 class="mb-0">OVO</h6>
+                                                <small class="text-muted">Pembayaran via OVO</small>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="d-flex mb-4">
-                                <div class="me-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">2</div>
-                                </div>
-                                <div>
-                                    <h5>Masukkan ID Game</h5>
-                                    <p class="text-muted mb-0">Masukkan ID game, server, nickname, dan data lain yang diperlukan.</p>
-                                </div>
+                            
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-accent btn-lg">
+                                    <i class="fas fa-credit-card me-2"></i> Bayar Sekarang
+                                </button>
                             </div>
-                            <div class="d-flex mb-4">
-                                <div class="me-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">3</div>
-                                </div>
-                                <div>
-                                    <h5>Pilih Metode Pembayaran</h5>
-                                    <p class="text-muted mb-0">Pilih metode pembayaran yang tersedia (Transfer Bank, e-Wallet, QRIS, Minimarket).</p>
-                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Check Order Section -->
+    <section id="check-order" class="py-5 bg-light" style="display: none;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product-detail">
+                        <h2 class="text-center mb-4">Cek Status Pesanan</h2>
+                        <form id="order-check-form">
+                            <div class="mb-3">
+                                <label for="invoice-number" class="form-label">Nomor Invoice</label>
+                                <input type="text" class="form-control" id="invoice-number" placeholder="Masukkan nomor invoice Anda" required>
                             </div>
-                            <div class="d-flex">
-                                <div class="me-3">
-                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">4</div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-search me-2"></i> Cek Pesanan
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div id="order-result" class="mt-4" style="display: none;">
+                            <div class="transaction-card">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0">Mobile Legends Diamond</h5>
+                                    <span class="badge bg-success">Sukses</span>
                                 </div>
-                                <div>
-                                    <h5>Selesaikan Pembayaran</h5>
-                                    <p class="text-muted mb-0">Lakukan pembayaran dan diamond/item akan langsung masuk ke akun game Anda.</p>
-                                </div>
+                                <p class="mb-1"><strong>ID Game:</strong> 12345678</p>
+                                <p class="mb-1"><strong>Server:</strong> Asia</p>
+                                <p class="mb-1"><strong>Nominal:</strong> 100 Diamond</p>
+                                <p class="mb-1"><strong>Harga:</strong> Rp 25.000</p>
+                                <p class="mb-1"><strong>Metode Pembayaran:</strong> QRIS</p>
+                                <p class="mb-1"><strong>Invoice:</strong> INV-20230615-001</p>
+                                <p class="mb-0"><strong>Waktu:</strong> 15 Juni 2023, 14:30 WIB</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <h4 class="card-title mb-4">Cek Pesanan</h4>
-                            <p class="text-muted mb-4">Masukkan nomor invoice untuk mengecek status pesanan Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Section -->
+    <section id="account-section" class="py-5 bg-white" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="product-detail sticky-top" style="top: 20px;">
+                        <div class="text-center mb-4">
+                            <img src="https://via.placeholder.com/100" alt="Profile" class="rounded-circle mb-2" width="100">
+                            <h5 id="user-name">John Doe</h5>
+                            <p class="text-muted mb-0">Member sejak Juni 2023</p>
+                        </div>
+                        
+                        <ul class="account-menu">
+                            <li><a href="#account-dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                            <li><a href="#account-history"><i class="fas fa-history"></i> Riwayat Transaksi</a></li>
+                            <li><a href="#account-profile"><i class="fas fa-user"></i> Profil Saya</a></li>
+                            <li><a href="#account-security"><i class="fas fa-lock"></i> Keamanan</a></li>
+                            <li><a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Keluar</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="product-detail">
+                        <div id="account-dashboard">
+                            <h4 class="mb-4">Dashboard Akun</h4>
+                            <div class="row mb-4">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card border-0 bg-primary bg-opacity-10 h-100">
+                                        <div class="card-body">
+                                            <h6 class="text-muted">Total Transaksi</h6>
+                                            <h3 class="mb-0">12</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card border-0 bg-success bg-opacity-10 h-100">
+                                        <div class="card-body">
+                                            <h6 class="text-muted">Transaksi Sukses</h6>
+                                            <h3 class="mb-0">10</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card border-0 bg-warning bg-opacity-10 h-100">
+                                        <div class="card-body">
+                                            <h6 class="text-muted">Dalam Proses</h6>
+                                            <h3 class="mb-0">2</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="mb-3">Transaksi Terakhir</h5>
+                            <div class="transaction-card">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0">Mobile Legends Diamond</h5>
+                                    <span class="badge bg-success">Sukses</span>
+                                </div>
+                                <p class="mb-1"><strong>ID Game:</strong> 12345678</p>
+                                <p class="mb-1"><strong>Server:</strong> Asia</p>
+                                <p class="mb-1"><strong>Nominal:</strong> 100 Diamond</p>
+                                <p class="mb-1"><strong>Harga:</strong> Rp 25.000</p>
+                                <p class="mb-1"><strong>Metode Pembayaran:</strong> QRIS</p>
+                                <p class="mb-1"><strong>Invoice:</strong> INV-20230615-001</p>
+                                <p class="mb-0"><strong>Waktu:</strong> 15 Juni 2023, 14:30 WIB</p>
+                            </div>
+                            
+                            <div class="transaction-card">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0">Free Fire Diamonds</h5>
+                                    <span class="badge bg-warning">Proses</span>
+                                </div>
+                                <p class="mb-1"><strong>ID Game:</strong> 87654321</p>
+                                <p class="mb-1"><strong>Server:</strong> Asia</p>
+                                <p class="mb-1"><strong>Nominal:</strong> 500 Diamonds</p>
+                                <p class="mb-1"><strong>Harga:</strong> Rp 75.000</p>
+                                <p class="mb-1"><strong>Metode Pembayaran:</strong> Bank Transfer</p>
+                                <p class="mb-1"><strong>Invoice:</strong> INV-20230614-002</p>
+                                <p class="mb-0"><strong>Waktu:</strong> 14 Juni 2023, 09:15 WIB</p>
+                            </div>
+                        </div>
+                        
+                        <div id="account-history" style="display: none;">
+                            <h4 class="mb-4">Riwayat Transaksi</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Invoice</th>
+                                            <th>Produk</th>
+                                            <th>Tanggal</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>INV-20230615-001</td>
+                                            <td>Mobile Legends Diamond</td>
+                                            <td>15 Jun 2023</td>
+                                            <td><span class="badge bg-success">Sukses</span></td>
+                                            <td>Rp 25.000</td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Detail</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>INV-20230614-002</td>
+                                            <td>Free Fire Diamonds</td>
+                                            <td>14 Jun 2023</td>
+                                            <td><span class="badge bg-warning">Proses</span></td>
+                                            <td>Rp 75.000</td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Detail</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>INV-20230610-003</td>
+                                            <td>PUBG Mobile UC</td>
+                                            <td>10 Jun 2023</td>
+                                            <td><span class="badge bg-success">Sukses</span></td>
+                                            <td>Rp 120.000</td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">Detail</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div id="account-profile" style="display: none;">
+                            <h4 class="mb-4">Profil Saya</h4>
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="first-name" class="form-label">Nama Depan</label>
+                                        <input type="text" class="form-control" id="first-name" value="John">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="last-name" class="form-label">Nama Belakang</label>
+                                        <input type="text" class="form-control" id="last-name" value="Doe">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" value="john.doe@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Nomor Telepon</label>
+                                    <input type="tel" class="form-control" id="phone" value="+6281234567890">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                            </form>
+                        </div>
+                        
+                        <div id="account-security" style="display: none;">
+                            <h4 class="mb-4">Keamanan Akun</h4>
                             <form>
                                 <div class="mb-3">
-                                    <label for="invoiceNumber" class="form-label">Nomor Invoice</label>
-                                    <input type="text" class="form-control" id="invoiceNumber" placeholder="Contoh: INV-123456">
+                                    <label for="current-password" class="form-label">Password Saat Ini</label>
+                                    <input type="password" class="form-control" id="current-password">
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100 py-3">
-                                    <i class="fas fa-search me-2"></i> Cek Status Pesanan
-                                </button>
+                                <div class="mb-3">
+                                    <label for="new-password" class="form-label">Password Baru</label>
+                                    <input type="password" class="form-control" id="new-password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirm-password" class="form-label">Konfirmasi Password Baru</label>
+                                    <input type="password" class="form-control" id="confirm-password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Ubah Password</button>
                             </form>
-                            <div class="mt-4 pt-3 border-top">
-                                <h5 class="mb-3">Pertanyaan Umum</h5>
-                                <div class="accordion" id="faqAccordion">
-                                    <div class="accordion-item border-0 mb-2">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button collapsed shadow-none bg-light rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                Berapa lama proses top up?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                                            <div class="accordion-body">
-                                                Biasanya diamond/item akan masuk ke akun game Anda dalam waktu 1-5 menit setelah pembayaran berhasil. Jika lebih dari 15 menit belum masuk, silakan hubungi customer service kami.
-                                            </div>
-                                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Center Section -->
+    <section id="help-center" class="py-5 bg-light" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Pusat Bantuan</h2>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-question-circle me-2 text-primary"></i> Pertanyaan Umum</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#faq-1" class="text-decoration-none">Bagaimana cara top up?</a></li>
+                                <li class="mb-2"><a href="#faq-2" class="text-decoration-none">Berapa lama proses top up?</a></li>
+                                <li class="mb-2"><a href="#faq-3" class="text-decoration-none">Pembayaran saya gagal, apa yang harus dilakukan?</a></li>
+                                <li class="mb-2"><a href="#faq-4" class="text-decoration-none">Bagaimana cara cek status pesanan?</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-headset me-2 text-primary"></i> Hubungi Kami</h5>
+                            <p class="card-text">Butuh bantuan lebih lanjut? Hubungi tim support kami.</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-envelope me-2"></i> support@gametopup.com</li>
+                                <li class="mb-2"><i class="fab fa-whatsapp me-2"></i> +62 812 3456 7890</li>
+                                <li class="mb-2"><i class="fas fa-phone me-2"></i> (021) 1234567</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-8">
+                    <div class="help-center">
+                        <div class="accordion" id="helpAccordion">
+                            <div class="card mb-3">
+                                <div class="card-header" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    <h5 class="mb-0">
+                                        Bagaimana cara melakukan top up game?
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-bs-parent="#helpAccordion">
+                                    <div class="card-body">
+                                        <p>Untuk melakukan top up, ikuti langkah-langkah berikut:</p>
+                                        <ol>
+                                            <li>Pilih game yang ingin Anda top up dari halaman utama</li>
+                                            <li>Pilih nominal diamond/koin yang diinginkan</li>
+                                            <li>Masukkan ID game dan server Anda</li>
+                                            <li>Pilih metode pembayaran</li>
+                                            <li>Selesaikan pembayaran</li>
+                                            <li>Item akan langsung masuk ke akun game Anda setelah pembayaran berhasil</li>
+                                        </ol>
                                     </div>
-                                    <div class="accordion-item border-0 mb-2">
-                                        <h2 class="accordion-header" id="headingTwo">
-                                            <button class="accordion-button collapsed shadow-none bg-light rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                Apa saja metode pembayarannya?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                                            <div class="accordion-body">
-                                                Kami menerima pembayaran via Transfer Bank (BCA, BRI, BNI, Mandiri, dll), e-Wallet (DANA, OVO, Gopay, LinkAja), QRIS, dan pembayaran di Minimarket (Alfamart, Indomaret).
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mb-3">
+                                <div class="card-header" id="headingTwo" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    <h5 class="mb-0">
+                                        Berapa lama proses top up biasanya?
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" data-bs-parent="#helpAccordion">
+                                    <div class="card-body">
+                                        <p>Proses top up biasanya instan (kurang dari 5 menit) setelah pembayaran berhasil. Namun untuk beberapa game atau metode pembayaran tertentu, proses mungkin memakan waktu hingga 1 jam.</p>
+                                        <p>Jika setelah 1 jam item belum masuk ke akun game Anda, silakan hubungi customer service kami dengan menyertakan bukti pembayaran.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mb-3">
+                                <div class="card-header" id="headingThree" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    <h5 class="mb-0">
+                                        Pembayaran saya gagal, apa yang harus dilakukan?
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" data-bs-parent="#helpAccordion">
+                                    <div class="card-body">
+                                        <p>Jika pembayaran Anda gagal:</p>
+                                        <ol>
+                                            <li>Pastikan saldo/kartu Anda mencukupi</li>
+                                            <li>Coba gunakan metode pembayaran lain</li>
+                                            <li>Jika dana sudah terpotong tetapi transaksi gagal, dana akan dikembalikan otomatis dalam 1x24 jam</li>
+                                            <li>Jika setelah 24 jam dana belum kembali, hubungi kami dengan menyertakan bukti transfer</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mb-3">
+                                <div class="card-header" id="headingFour" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                    <h5 class="mb-0">
+                                        Bagaimana cara cek status pesanan?
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" data-bs-parent="#helpAccordion">
+                                    <div class="card-body">
+                                        <p>Anda dapat mengecek status pesanan dengan:</p>
+                                        <ol>
+                                            <li>Klik menu "Cek Pesanan" di header website</li>
+                                            <li>Masukkan nomor invoice yang Anda terima via email/SMS</li>
+                                            <li>Klik tombol "Cek Pesanan"</li>
+                                        </ol>
+                                        <p>Anda juga bisa melihat riwayat transaksi di akun Anda setelah login.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mb-3">
+                                <div class="card-header" id="headingFive" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                    <h5 class="mb-0">
+                                        Apakah ada garansi untuk top up yang dilakukan?
+                                    </h5>
+                                </div>
+                                <div id="collapseFive" class="collapse" data-bs-parent="#helpAccordion">
+                                    <div class="card-body">
+                                        <p>Kami memberikan garansi 100% untuk semua transaksi top up. Jika terjadi masalah:</p>
+                                        <ul>
+                                            <li>Item tidak masuk ke akun game Anda dalam waktu 1 jam</li>
+                                            <li>Jumlah item tidak sesuai dengan yang dipesan</li>
+                                            <li>Masalah lain terkait transaksi</li>
+                                        </ul>
+                                        <p>Silakan hubungi customer service kami dengan menyertakan bukti pembayaran dan detail transaksi. Kami akan memproses pengembalian dana atau mengirimkan item yang sesuai.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Account Section -->
+    <section id="buy-account-section" class="py-5 bg-white" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Beli Akun Game</h2>
+            <p class="lead mb-5">Dapatkan akun game premium dengan harga terbaik</p>
+            
+            <div class="row">
+                <!-- Account 1 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=ML+Legend" class="card-img-top" alt="ML Legend Account">
+                        <div class="card-body">
+                            <h5 class="card-title">ML Legend Account</h5>
+                            <p class="card-text text-muted small">Mythic 500+ Points</p>
+                            <p class="card-text fw-bold">Rp 1.500.000</p>
+                            <a href="#ml-account-detail" class="btn btn-primary">Beli Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account 2 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Valorant+Radiant" class="card-img-top" alt="Valorant Radiant Account">
+                        <div class="card-body">
+                            <h5 class="card-title">Valorant Radiant</h5>
+                            <p class="card-text text-muted small">Radiant Peak 250 RR</p>
+                            <p class="card-text fw-bold">Rp 2.500.000</p>
+                            <a href="#valorant-account-detail" class="btn btn-primary">Beli Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account 3 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Genshin+Whale" class="card-img-top" alt="Genshin Impact Whale Account">
+                        <div class="card-body">
+                            <h5 class="card-title">Genshin Whale</h5>
+                            <p class="card-text text-muted small">AR 55, 10x 5* Characters</p>
+                            <p class="card-text fw-bold">Rp 3.000.000</p>
+                            <a href="#genshin-account-detail" class="btn btn-primary">Beli Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account 4 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=PUBG+Conqueror" class="card-img-top" alt="PUBG Conqueror Account">
+                        <div class="card-body">
+                            <h5 class="card-title">PUBG Conqueror</h5>
+                            <p class="card-text text-muted small">Season 18 Conqueror</p>
+                            <p class="card-text fw-bold">Rp 1.200.000</p>
+                            <a href="#pubg-account-detail" class="btn btn-primary">Beli Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#all-accounts" class="btn btn-outline-primary px-4">
+                    <i class="fas fa-eye me-2"></i> Lihat Semua Akun
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rent Account Section -->
+    <section id="rent-account-section" class="py-5 bg-light" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Sewa Akun Game</h2>
+            <p class="lead mb-5">Nikmati akun game premium dengan biaya sewa terjangkau</p>
+            
+            <div class="row">
+                <!-- Account 1 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=ML+Mythic" class="card-img-top" alt="ML Mythic Account">
+                        <div class="card-body">
+                            <h5 class="card-title">ML Mythic Account</h5>
+                            <p class="card-text text-muted small">Mythic 300+ Points</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary me-1">Rp 50.000/hari</span>
+                                <span class="badge bg-success">Rp 250.000/minggu</span>
+                            </div>
+                            <a href="#ml-rent-detail" class="btn btn-primary">Sewa Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account 2 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Valorant+Immortal" class="card-img-top" alt="Valorant Immortal Account">
+                        <div class="card-body">
+                            <h5 class="card-title">Valorant Immortal</h5>
+                            <p class="card-text text-muted small">Immortal 3 Peak</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary me-1">Rp 75.000/hari</span>
+                                <span class="badge bg-success">Rp 400.000/minggu</span>
+                            </div>
+                            <a href="#valorant-rent-detail" class="btn btn-primary">Sewa Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account 3 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=Genshin+AR55" class="card-img-top" alt="Genshin Impact AR55 Account">
+                        <div class="card-body">
+                            <h5 class="card-title">Genshin AR55</h5>
+                            <p class="card-text text-muted small">5x 5* Characters</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary me-1">Rp 60.000/hari</span>
+                                <span class="badge bg-success">Rp 300.000/minggu</span>
+                            </div>
+                            <a href="#genshin-rent-detail" class="btn btn-primary">Sewa Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account 4 -->
+                <div class="col-6 col-md-4 col-lg-3 mb-4">
+                    <div class="game-card card h-100">
+                        <img src="https://via.placeholder.com/300x200?text=PUBG+Ace" class="card-img-top" alt="PUBG Ace Account">
+                        <div class="card-body">
+                            <h5 class="card-title">PUBG Ace</h5>
+                            <p class="card-text text-muted small">Ace Dominator</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary me-1">Rp 40.000/hari</span>
+                                <span class="badge bg-success">Rp 200.000/minggu</span>
+                            </div>
+                            <a href="#pubg-rent-detail" class="btn btn-primary">Sewa Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="#all-rent-accounts" class="btn btn-outline-primary px-4">
+                    <i class="fas fa-eye me-2"></i> Lihat Semua Akun Sewa
+                </a>
             </div>
         </div>
     </section>
@@ -1491,515 +1187,315 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-                    <img src="https://via.placeholder.com/150x50?text=GameTopUp" alt="Logo" class="footer-logo">
-                    <p class="footer-about">Platform top up game termurah dan tercepat di Indonesia. Proses instan dan aman dengan garansi uang kembali.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://via.placeholder.com/150x50?text=GameTopUp" alt="GameTopUp Logo" class="mb-3">
+                    <p>Platform top up game terpercaya dengan proses instan dan harga termurah. Layanan customer service 24 jam siap membantu Anda.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
-                    <h5 class="footer-title">Layanan</h5>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Layanan</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="footer-link">Top Up Game</a></li>
-                        <li><a href="#" class="footer-link">Beli Akun Game</a></li>
-                        <li><a href="#" class="footer-link">Sewa Akun Game</a></li>
-                        <li><a href="#" class="footer-link">Voucher Game</a></li>
-                        <li><a href="#" class="footer-link">Item Game</a></li>
+                        <li class="mb-2"><a href="#">Top Up Game</a></li>
+                        <li class="mb-2"><a href="#">Beli Akun</a></li>
+                        <li class="mb-2"><a href="#">Sewa Akun</a></li>
+                        <li class="mb-2"><a href="#">Voucher Game</a></li>
+                        <li><a href="#">Cek Pesanan</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
-                    <h5 class="footer-title">Perusahaan</h5>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Perusahaan</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="footer-link">Tentang Kami</a></li>
-                        <li><a href="#" class="footer-link">Blog</a></li>
-                        <li><a href="#" class="footer-link">Karir</a></li>
-                        <li><a href="#" class="footer-link">Mitra</a></li>
-                        <li><a href="#" class="footer-link">Kontak</a></li>
+                        <li class="mb-2"><a href="#">Tentang Kami</a></li>
+                        <li class="mb-2"><a href="#">Kebijakan Privasi</a></li>
+                        <li class="mb-2"><a href="#">Syarat & Ketentuan</a></li>
+                        <li class="mb-2"><a href="#">Blog</a></li>
+                        <li><a href="#">Karir</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
-                    <h5 class="footer-title">Bantuan</h5>
+                <div class="col-lg-4">
+                    <h5 class="mb-4">Hubungi Kami</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="footer-link">Pusat Bantuan</a></li>
-                        <li><a href="#" class="footer-link">Cara Top Up</a></li>
-                        <li><a href="#" class="footer-link">FAQ</a></li>
-                        <li><a href="#" class="footer-link">Syarat & Ketentuan</a></li>
-                        <li><a href="#" class="footer-link">Kebijakan Privasi</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5 class="footer-title">Hubungi Kami</h5>
-                    <ul class="list-unstyled text-muted">
-                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> cs@gametopup.com</li>
-                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +62 812 3456 7890</li>
-                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Jakarta, Indonesia</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Jl. Contoh No. 123, Jakarta</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> (021) 1234567</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@gametopup.com</li>
+                        <li><i class="fab fa-whatsapp me-2"></i> +62 812 3456 7890</li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright text-center">
-                <p class="mb-0">© 2023 GameTopUp. All rights reserved.</p>
+            <hr class="mt-4 mb-3" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 GameTopUp. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <img src="https://via.placeholder.com/200x30?text=Payment+Methods" alt="Payment Methods" class="img-fluid">
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Bottom Navigation -->
-    <div class="mobile-nav d-lg-none">
-        <a href="#" class="mobile-nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#popular-games" class="mobile-nav-item">
-            <i class="fas fa-gamepad"></i>
-            <span>Top Up</span>
-        </a>
-        <a href="#" class="mobile-nav-item">
-            <i class="fas fa-history"></i>
-            <span>Riwayat</span>
-        </a>
-        <a href="#" class="mobile-nav-item">
-            <i class="fas fa-user"></i>
-            <span>Akun</span>
-        </a>
-    </div>
-
-    <!-- Product Detail Modal -->
-    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="productModalLabel">Top Up Game</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="game-modal-title">
-                        <img src="https://via.placeholder.com/40x40?text=ML" alt="Game Icon" class="game-modal-icon" id="modalGameIcon">
-                        <span id="modalGameTitle">Mobile Legends</span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="gameId" class="form-label">ID Game</label>
-                        <input type="text" class="form-control" id="gameId" placeholder="Masukkan ID Game">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="gameServer" class="form-label">Server</label>
-                        <select class="form-select" id="gameServer">
-                            <option selected disabled>Pilih Server</option>
-                            <option value="server1">Server 1 (Indonesia)</option>
-                            <option value="server2">Server 2 (Singapore)</option>
-                            <option value="server3">Server 3 (Malaysia)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="gameNickname" class="form-label">Nickname</label>
-                        <input type="text" class="form-control" id="gameNickname" placeholder="Masukkan Nickname">
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="gameNominal" class="form-label">Nominal Top Up</label>
-                        <select class="form-select" id="gameNominal">
-                            <option selected disabled>Pilih Nominal</option>
-                            <option value="50">50 Diamond - Rp 10.000</option>
-                            <option value="100">100 Diamond - Rp 19.000</option>
-                            <option value="250">250 Diamond - Rp 45.000</option>
-                            <option value="500">500 Diamond - Rp 85.000</option>
-                            <option value="1000">1000 Diamond - Rp 160.000</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="form-label">Metode Pembayaran</label>
-                        
-                        <div class="payment-method mb-3" onclick="selectPayment(this)">
-                            <div class="payment-icon">
-                                <i class="fas fa-qrcode"></i>
-                            </div>
-                            <div class="payment-info">
-                                <h6>QRIS</h6>
-                                <small>Semua Bank & e-Wallet</small>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-method mb-3" onclick="selectPayment(this)">
-                            <div class="payment-icon">
-                                <i class="fas fa-university"></i>
-                            </div>
-                            <div class="payment-info">
-                                <h6>Transfer Bank</h6>
-                                <small>BCA, BRI, BNI, Mandiri, dll</small>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-method mb-3" onclick="selectPayment(this)">
-                            <div class="payment-icon">
-                                <i class="fas fa-wallet"></i>
-                            </div>
-                            <div class="payment-info">
-                                <h6>e-Wallet</h6>
-                                <small>DANA, OVO, Gopay, LinkAja</small>
-                            </div>
-                        </div>
-                        
-                        <div class="payment-method" onclick="selectPayment(this)">
-                            <div class="payment-icon">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            <div class="payment-info">
-                                <h6>Minimarket</h6>
-                                <small>Alfamart, Indomaret</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="d-flex align-items-center mb-3">
-                        <input type="checkbox" id="usePromo" class="me-2">
-                        <label for="usePromo">Gunakan Kode Promo</label>
-                    </div>
-                    
-                    <div class="input-group mb-4" id="promoField" style="display: none;">
-                        <input type="text" class="form-control" placeholder="Masukkan kode promo">
-                        <button class="btn btn-outline-primary">Gunakan</button>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                            <small class="text-muted">Total Pembayaran</small>
-                            <h4 class="mb-0 gradient-text">Rp 19.000</h4>
-                        </div>
-                        <div class="text-end">
-                            <small class="text-muted">Hemat <span class="text-success">Rp 3.000</span></small>
-                            <p class="mb-0"><small class="text-decoration-line-through text-muted">Rp 22.000</small></p>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-pay">
-                        <i class="fas fa-credit-card me-2"></i> Bayar Sekarang
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Account Modal -->
-    <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="accountModalLabel">Akun Saya</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="text-center mb-4">
-                        <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                            <i class="fas fa-user text-white" style="font-size: 2rem;"></i>
-                        </div>
-                        <h5 class="mt-3 mb-1">Nama Pengguna</h5>
-                        <p class="text-muted">user@example.com</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <h6 class="mb-3">Riwayat Transaksi</h6>
-                        <div class="card mb-3">
-                            <div class="card-body p-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://via.placeholder.com/40x40?text=ML" alt="Game" width="40" height="40" class="rounded me-3">
-                                        <div>
-                                            <h6 class="mb-1">Mobile Legends</h6>
-                                            <small class="text-muted">INV-123456 - 100 Diamond</small>
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <span class="badge bg-warning text-dark">Menunggu Pembayaran</span>
-                                        <p class="mb-0 text-primary fw-bold">Rp 19.000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="card-body p-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://via.placeholder.com/40x40?text=FF" alt="Game" width="40" height="40" class="rounded me-3">
-                                        <div>
-                                            <h6 class="mb-1">Free Fire</h6>
-                                            <small class="text-muted">INV-123455 - 500 Diamond</small>
-                                        </div>
-                                    </div>
-                                    <div class="text-end">
-                                        <span class="badge bg-success">Sukses</span>
-                                        <p class="mb-0 text-primary fw-bold">Rp 85.000</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-outline-primary">
-                            <i class="fas fa-list me-2"></i> Lihat Semua Transaksi
-                        </button>
-                        <button class="btn btn-danger">
-                            <i class="fas fa-sign-out-alt me-2"></i> Logout
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Help Center Modal -->
-    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="helpModalLabel">Pusat Bantuan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="list-group mb-4">
-                                <a href="#" class="list-group-item list-group-item-action active">
-                                    <i class="fas fa-question-circle me-2"></i> Pertanyaan Umum
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <i class="fas fa-credit-card me-2"></i> Pembayaran
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <i class="fas fa-truck me-2"></i> Pengiriman
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <i class="fas fa-user-shield me-2"></i> Keamanan
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <i class="fas fa-file-alt me-2"></i> Kebijakan
-                                </a>
-                            </div>
-                            
-                            <div class="card border-0 shadow-sm">
-                                <div class="card-body">
-                                    <h6 class="mb-3">Butuh bantuan lebih lanjut?</h6>
-                                    <div class="d-flex align-items-center mb-3">
-                                        <i class="fas fa-whatsapp me-3 text-success" style="font-size: 1.5rem;"></i>
-                                        <div>
-                                            <p class="mb-0">WhatsApp</p>
-                                            <a href="https://wa.me/6281234567890" class="text-primary">+62 812 3456 7890</a>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-envelope me-3 text-primary" style="font-size: 1.5rem;"></i>
-                                        <div>
-                                            <p class="mb-0">Email</p>
-                                            <a href="mailto:cs@gametopup.com" class="text-primary">cs@gametopup.com</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="accordion" id="helpAccordion">
-                                <div class="accordion-item mb-3 border-0 shadow-sm">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Bagaimana cara melakukan top up?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#helpAccordion">
-                                        <div class="accordion-body">
-                                            <ol>
-                                                <li>Pilih game yang ingin Anda top up</li>
-                                                <li>Pilih nominal diamond/koin/item yang diinginkan</li>
-                                                <li>Masukkan ID game dan server</li>
-                                                <li>Pilih metode pembayaran</li>
-                                                <li>Lakukan pembayaran</li>
-                                                <li>Diamond/koin/item akan masuk ke akun Anda dalam 1-5 menit</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item mb-3 border-0 shadow-sm">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Metode pembayaran apa saja yang tersedia?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#helpAccordion">
-                                        <div class="accordion-body">
-                                            <p>Kami menyediakan berbagai metode pembayaran:</p>
-                                            <ul>
-                                                <li>Transfer Bank (BCA, BRI, BNI, Mandiri, dll)</li>
-                                                <li>QRIS (Semua bank dan e-Wallet yang mendukung QRIS)</li>
-                                                <li>e-Wallet (DANA, OVO, Gopay, LinkAja)</li>
-                                                <li>Minimarket (Alfamart, Indomaret)</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item mb-3 border-0 shadow-sm">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Berapa lama proses pengiriman diamond/item?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#helpAccordion">
-                                        <div class="accordion-body">
-                                            <p>Biasanya diamond/item akan masuk ke akun game Anda dalam waktu 1-5 menit setelah pembayaran berhasil. Jika lebih dari 15 menit belum masuk, silakan hubungi customer service kami dengan menyertakan bukti pembayaran.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item mb-3 border-0 shadow-sm">
-                                    <h2 class="accordion-header" id="headingFour">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                            Bagaimana jika diamond/item tidak masuk ke akun saya?
-                                        </button>
-                                    </h2>
-                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#helpAccordion">
-                                        <div class="accordion-body">
-                                            <p>Jika diamond/item tidak masuk ke akun Anda setelah 15 menit:</p>
-                                            <ol>
-                                                <li>Pastikan ID game dan server yang dimasukkan sudah benar</li>
-                                                <li>Cek kembali status pesanan di halaman Riwayat Transaksi</li>
-                                                <li>Jika status sudah "Sukses" tetapi diamond belum masuk, silakan hubungi customer service kami</li>
-                                                <li>Siapkan bukti pembayaran dan nomor invoice untuk proses verifikasi</li>
-                                            </ol>
-                                            <p>Kami akan memproses kompensasi atau pengembalian dana sesuai kebijakan yang berlaku.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS animation
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
+        // Sample game data
+        const games = {
+            'mobile-legends': {
+                title: 'Mobile Legends',
+                image: 'https://via.placeholder.com/400x300?text=Mobile+Legends',
+                denominations: [
+                    { amount: '5 Diamond', price: 'Rp 1.500' },
+                    { amount: '12 Diamond', price: 'Rp 3.000' },
+                    { amount: '28 Diamond', price: 'Rp 6.500' },
+                    { amount: '50 Diamond', price: 'Rp 11.000' },
+                    { amount: '100 Diamond', price: 'Rp 21.000' },
+                    { amount: '200 Diamond', price: 'Rp 40.000' },
+                    { amount: '500 Diamond', price: 'Rp 95.000' },
+                    { amount: '1000 Diamond', price: 'Rp 180.000' }
+                ]
+            },
+            'free-fire': {
+                title: 'Free Fire',
+                image: 'https://via.placeholder.com/400x300?text=Free+Fire',
+                denominations: [
+                    { amount: '5 Diamonds', price: 'Rp 1.200' },
+                    { amount: '12 Diamonds', price: 'Rp 2.800' },
+                    { amount: '50 Diamonds', price: 'Rp 10.500' },
+                    { amount: '100 Diamonds', price: 'Rp 20.000' },
+                    { amount: '200 Diamonds', price: 'Rp 38.000' },
+                    { amount: '500 Diamonds', price: 'Rp 90.000' },
+                    { amount: '1000 Diamonds', price: 'Rp 175.000' }
+                ]
+            },
+            'pubg-mobile': {
+                title: 'PUBG Mobile',
+                image: 'https://via.placeholder.com/400x300?text=PUBG+Mobile',
+                denominations: [
+                    { amount: '60 UC', price: 'Rp 12.000' },
+                    { amount: '325 UC', price: 'Rp 60.000' },
+                    { amount: '660 UC', price: 'Rp 120.000' },
+                    { amount: '1800 UC', price: 'Rp 300.000' },
+                    { amount: '3600 UC', price: 'Rp 580.000' }
+                ]
+            },
+            'valorant': {
+                title: 'Valorant',
+                image: 'https://via.placeholder.com/400x300?text=Valorant',
+                denominations: [
+                    { amount: '125 VP', price: 'Rp 15.000' },
+                    { amount: '420 VP', price: 'Rp 45.000' },
+                    { amount: '700 VP', price: 'Rp 75.000' },
+                    { amount: '1375 VP', price: 'Rp 140.000' },
+                    { amount: '2400 VP', price: 'Rp 240.000' },
+                    { amount: '4000 VP', price: 'Rp 380.000' },
+                    { amount: '8150 VP', price: 'Rp 750.000' }
+                ]
+            }
+        };
+        
+        // Show product detail when a game is clicked
+        document.querySelectorAll('[href^="#mobile-legends"], [href^="#free-fire"], [href^="#pubg-mobile"], [href^="#valorant"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const gameId = this.getAttribute('href').substring(1);
+                const game = games[gameId];
+                
+                // Hide all sections
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show product detail section
+                document.getElementById('product-detail').style.display = 'block';
+                
+                // Update game details
+                document.getElementById('detail-game-title').textContent = game.title;
+                document.getElementById('detail-game-image').src = game.image;
+                
+                // Load denominations
+                const denominationList = document.getElementById('denomination-list');
+                denominationList.innerHTML = '';
+                
+                game.denominations.forEach(item => {
+                    const col = document.createElement('div');
+                    col.className = 'col-6 col-md-4 mb-3';
+                    
+                    const btn = document.createElement('button');
+                    btn.className = 'btn btn-outline-primary w-100 py-3 denomination-btn';
+                    btn.setAttribute('data-amount', item.amount);
+                    btn.setAttribute('data-price', item.price);
+                    
+                    btn.innerHTML = `
+                        <div class="fw-bold">${item.amount}</div>
+                        <div class="text-muted small">${item.price}</div>
+                    `;
+                    
+                    col.appendChild(btn);
+                    denominationList.appendChild(col);
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
         });
         
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-                navbar.querySelector('.navbar-brand img').style.height = '35px';
-            } else {
-                navbar.classList.remove('scrolled');
-                navbar.querySelector('.navbar-brand img').style.height = '40px';
+        // Select denomination
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('denomination-btn')) {
+                document.querySelectorAll('.denomination-btn').forEach(btn => {
+                    btn.classList.remove('active', 'btn-primary');
+                    btn.classList.add('btn-outline-primary');
+                });
+                
+                e.target.classList.remove('btn-outline-primary');
+                e.target.classList.add('active', 'btn-primary');
+                
+                document.getElementById('buy-now-btn').textContent = `Beli Sekarang - ${e.target.getAttribute('data-amount')} (${e.target.getAttribute('data-price')})`;
+            }
+            
+            // Select payment method
+            if (e.target.closest('.payment-method')) {
+                const paymentMethod = e.target.closest('.payment-method');
+                document.querySelectorAll('.payment-method').forEach(method => {
+                    method.classList.remove('selected');
+                });
+                paymentMethod.classList.add('selected');
             }
         });
         
-        // Product Modal Script
-        const productModal = document.getElementById('productModal');
-        if (productModal) {
-            productModal.addEventListener('show.bs.modal', function (event) {
-                const button = event.relatedTarget;
-                const gameName = button.getAttribute('data-game');
-                const modalTitle = productModal.querySelector('.modal-title');
-                const gameTitle = productModal.querySelector('#modalGameTitle');
-                const gameIcon = productModal.querySelector('#modalGameIcon');
-                
-                // Set game name and icon
-                gameTitle.textContent = gameName;
-                modalTitle.textContent = `Top Up ${gameName}`;
-                gameIcon.src = `https://via.placeholder.com/40x40?text=${gameName.substring(0,2)}`;
-                gameIcon.alt = gameName;
-                
-                // You can add more specific game data here if needed
-            });
-        }
-        
-        // Toggle promo code field
-        const usePromo = document.getElementById('usePromo');
-        const promoField = document.getElementById('promoField');
-        
-        if (usePromo && promoField) {
-            usePromo.addEventListener('change', function() {
-                if (this.checked) {
-                    promoField.style.display = 'flex';
-                } else {
-                    promoField.style.display = 'none';
-                }
-            });
-        }
-        
-        // Payment Method Selection
-        function selectPayment(element) {
-            const paymentMethods = document.querySelectorAll('.payment-method');
-            paymentMethods.forEach(method => {
-                method.classList.remove('selected');
-            });
-            element.classList.add('selected');
-        }
-        
-        // Login Button Click
-        const loginBtn = document.querySelector('.btn-login');
-        if (loginBtn) {
-            loginBtn.addEventListener('click', function() {
-                const accountModal = new bootstrap.Modal(document.getElementById('accountModal'));
-                accountModal.show();
-            });
-        }
-        
-        // View All Games Button
-        const viewAllBtn = document.querySelector('.btn-view-all');
-        if (viewAllBtn) {
-            viewAllBtn.addEventListener('click', function(e) {
+        // Navigation
+        document.querySelectorAll('[href="#home"]').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                alert('Menampilkan semua game...');
-                // You can implement actual functionality here
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('home').style.display = 'block';
+                document.querySelector('.hero-section').style.display = 'block';
+                document.querySelector('.mobile-nav-item').classList.add('active');
             });
-        }
+        });
         
-        // Mobile Navigation Active State
-        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-        mobileNavItems.forEach(item => {
-            item.addEventListener('click', function() {
-                mobileNavItems.forEach(navItem => {
-                    navItem.classList.remove('active');
+        document.querySelectorAll('[href="#check-order"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('check-order').style.display = 'block';
+                
+                // Update mobile nav active state
+                document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector('[href="#check-order"].mobile-nav-item').classList.add('active');
+            });
+        });
+        
+        document.querySelectorAll('[href="#account"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('account-section').style.display = 'block';
+                
+                // Update mobile nav active state
+                document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector('[href="#account"].mobile-nav-item').classList.add('active');
+            });
+        });
+        
+        document.querySelectorAll('[href="#help"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('help-center').style.display = 'block';
+                
+                // Update mobile nav active state
+                document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector('[href="#help"].mobile-nav-item').classList.add('active');
+            });
+        });
+        
+        document.querySelectorAll('[href="#buy-account"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('buy-account-section').style.display = 'block';
+            });
+        });
+        
+        document.querySelectorAll('[href="#rent-account"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById('rent-account-section').style.display = 'block';
+            });
+        });
+        
+        // Account menu navigation
+        document.querySelectorAll('.account-menu a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.account-menu a').forEach(item => {
+                    item.classList.remove('active');
                 });
                 this.classList.add('active');
+                
+                const targetId = this.getAttribute('href').substring(1);
+                document.querySelectorAll('#account-section > div > div > div > div').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(targetId).style.display = 'block';
             });
         });
         
-        // Floating animation for elements
-        const floatingElements = document.querySelectorAll('.floating, .floating-2');
-        floatingElements.forEach(el => {
-            el.style.opacity = '0';
-            setTimeout(() => {
-                el.style.opacity = '1';
-            }, 500);
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Anda telah logout');
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById('home').style.display = 'block';
+            document.querySelector('.hero-section').style.display = 'block';
+            
+            // Update mobile nav active state
+            document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector('[href="#home"].mobile-nav-item').classList.add('active');
         });
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        // Form submission
+        document.getElementById('account-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Pembayaran berhasil diproses! Silakan cek email Anda untuk instruksi lebih lanjut.');
+        });
+        
+        document.getElementById('order-check-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('order-result').style.display = 'block';
+        });
+        
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
         });
     </script>
 </body>
