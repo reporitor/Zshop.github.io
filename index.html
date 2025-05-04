@@ -8,7 +8,61 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-          /* Custom CSS */
+        /* Ganti warna background */
+.gradient-bg {
+    background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+}
+
+/* Perbaiki kontras teks */
+.text-gray-600 {
+    color: #666;
+}
+        @media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+    }
+    .hero-text {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+}
+        /* Ganti animasi yang berlebihan */
+.game-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.game-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Hapus animasi pulse yang mengganggu */
+.pulse-animation {
+    animation: none;
+}
+        /* Tambahkan di CSS */
+@media (max-width: 640px) {
+    .faq-toggle {
+        padding: 12px;
+    }
+    .faq-content {
+        padding: 12px;
+    }
+}
+         
+        /* Custom CSS */
         .gradient-bg {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
@@ -33,6 +87,18 @@
         .bottom-nav {
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
+        /* Tambahkan di bagian CSS */
+@media (max-width: 640px) {
+    .payment-methods {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .payment-methods {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
         /* FAQ Animation */
         .faq-content {
             max-height: 0;
@@ -354,63 +420,29 @@
         </div>
         
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Testimoni 1 -->
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex items-center mb-4">
-                    <img src="https://tse1.mm.bing.net/th?id=OIP.MmcVzfzO2GiIYOrTq7kD_QAAAA&pid=Api&P=0&h=180" alt="Sarah Wijaya" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="font-bold">Sarah Wijaya</h4>
-                        <div class="flex items-center">
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-gray-600">"Top up MLBB cepat banget, ga sampe 2 menit anjay diamond langsung masuk. Harganya juga lebih murah banget cok dari yang lain💙😍"</p>
-            </div>
-            
-            <!-- Testimoni 2 -->
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex items-center mb-4">
-                    <img src="https://tse1.mm.bing.net/th?id=OIP.rgFkxmRWbIvXxhiyd-4iRQHaHa&pid=Api&P=0&h=180" alt="Budi Santoso" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="font-bold">Budi Santoso</h4>
-                        <div class="flex items-center">
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-gray-600">"Pertama kali coba top up disini dan ternyata beneran legit. CS nya ramah dan respon cepat waktu ada masalah walaupaun cuman iseng report😁."</p>
-            </div>
-            
-            <!-- Testimoni 3 -->
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex items-center mb-4">
-                    <img src="https://tse4.mm.bing.net/th?id=OIP.8Pue5_REnix8i1_GnqBYBgHaHa&pid=Api&P=0&h=180" alt="Dewi Lestari" class="w-12 h-12 rounded-full mr-4">
-                    <div>
-                        <h4 class="font-bold">Dewi Lestari</h4>
-                        <div class="flex items-center">
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                            <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-gray-600">"Biasanya top up di tempat lain, tapi sejak temen rekomendasiin web ini, jadi langganan disini aja dah. Murah dan cepat wkkwkk😂😂"</p>
+          <!-- Ganti testimoni dengan versi yang lebih baik -->
+<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 transform hover:scale-105 transition duration-300">
+    <div class="flex items-center mb-4">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Wijaya" 
+             class="w-12 h-12 rounded-full mr-4 border-2 border-blue-400 object-cover">
+        <div>
+            <h4 class="font-bold">Sarah Wijaya</h4>
+            <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
             </div>
         </div>
     </div>
-</section>
-                
+    <p class="text-gray-600 italic">"Top up MLBB cepat banget, ga sampe 2 menit diamond langsung masuk..."</p>
+    <div class="mt-3 text-xs text-gray-400">
+        <i class="fas fa-clock mr-1"></i>2 hari yang lalu
+    </div>
+</div>
+            
+        
     <!-- FAQ Section -->
 <section id="bantuan" class="py-12 bg-white">
     <div class="container mx-auto px-4">
@@ -502,67 +534,83 @@
         </div>
     </div>
 </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-12 pb-6">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-2">
-                            <i class="fas fa-gamepad text-white text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold">Game<span class="text-blue-400">TopUp</span></h3>
+<!-- Ganti footer dengan versi yang lebih baik -->
+<footer class="bg-gray-900 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Logo dan Sosial Media -->
+            <div>
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-2">
+                        <i class="fas fa-gamepad text-white text-xl"></i>
                     </div>
-                    <p class="text-gray-400 mb-4">Platform top up game termurah dan tercepat di Indonesia.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-discord"></i></a>
-                    </div>
+                    <h3 class="text-xl font-bold">Game<span class="text-blue-400">TopUp</span></h3>
                 </div>
-                
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Tautan Cepat</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Beranda</a></li>
-                        <li><a href="#games" class="text-gray-400 hover:text-blue-400 transition">Game Populer</a></li>
-                        <li><a href="#cek-pesanan" class="text-gray-400 hover:text-blue-400 transition">Cek Pesanan</a></li>
-                        <li><a href="#bantuan" class="text-gray-400 hover:text-blue-400 transition">Bantuan</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Layanan</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Mobile Legends</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Free Fire</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Genshin Impact</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Valorant</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Kontak Kami</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-gray-400"><i class="fas fa-envelope mr-2 text-blue-400"></i> cs@gametopup.id</li>
-                        <li class="flex items-center text-gray-400"><i class="fab fa-whatsapp mr-2 text-blue-400"></i> +62 812-3456-7890</li>
-                        <li class="flex items-center text-gray-400"><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i> Jakarta, Indonesia</li>
-                    </ul>
+                <p class="text-gray-400 mb-4 text-sm">Platform top up game termurah dan tercepat di Indonesia.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-blue-400 transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-blue-400 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-blue-400 transition">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 GameTopUp. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-blue-400 text-sm transition">Syarat & Ketentuan</a>
-                    <a href="#" class="text-gray-400 hover:text-blue-400 text-sm transition">Kebijakan Privasi</a>
-                    <a href="#" class="text-gray-400 hover:text-blue-400 text-sm transition">FAQ</a>
-                </div>
+            <!-- Menu Footer -->
+            <div class="space-y-4">
+                <h4 class="font-bold text-lg mb-2">Menu</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Beranda</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Game Populer</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Cek Pesanan</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Bantuan</a></li>
+                </ul>
+            </div>
+            
+            <!-- Layanan -->
+            <div class="space-y-4">
+                <h4 class="font-bold text-lg mb-2">Layanan</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Mobile Legends</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Free Fire</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">PUBG Mobile</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Valorant</a></li>
+                </ul>
+            </div>
+            
+            <!-- Kontak -->
+            <div class="space-y-4">
+                <h4 class="font-bold text-lg mb-2">Hubungi Kami</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-envelope text-blue-400 mt-1 mr-2 text-sm"></i>
+                        <span class="text-gray-400 text-sm">cs@gametopup.id</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fab fa-whatsapp text-blue-400 mt-1 mr-2 text-sm"></i>
+                        <span class="text-gray-400 text-sm">+62 812-3456-7890</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-blue-400 mt-1 mr-2 text-sm"></i>
+                        <span class="text-gray-400 text-sm">Jakarta, Indonesia</span>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+        
+        <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-xs mb-4 md:mb-0">© 2023 GameTopUp. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-blue-400 text-xs transition">Syarat & Ketentuan</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 text-xs transition">Kebijakan Privasi</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
     <!-- Bottom Navigation Mobile -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white bottom-nav flex justify-around items-center py-3 z-50">
